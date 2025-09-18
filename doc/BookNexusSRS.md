@@ -1,10 +1,10 @@
 # Software Requirements Specification
-## For <BookNexus>
+## For BookNexus
 
 Version 0.1  
-Prepared by <Logan Wilkins & Joseph Diku>  
+Prepared by <Joseph Diku and Logan Wilkins>
 <CSC340>  
-<September 17, 2025> 
+<09/16/2025>
 
 Table of Contents
 =================
@@ -35,49 +35,70 @@ Table of Contents
     * 3.2.7 [Deadline](#327-deadline)
 
 ## Revision History
-| Name | Date    | Reason For Changes  | Version   |
-|Logan |   9/1   | Doing Requirments   | 1.0       |
-|      |         |                     |           |
-|      |         |                     |           |
-|      |         |                     |           |
+| Name          | Date       | Reason For Changes                     | Version   |
+| ------------- | ---------- | -------------------------------------- | --------- |
+| Joseph Diku   | 09/16/2025 | Initial completion of Sections 1 and 2 |  0.1      |
+| Logan Wilkins | 09/16/2025 | Initial completion of Section 3        |  0.1      |
+|               |            |                                        |           |
 
 ## 1. Introduction
 
 ### 1.1 Document Purpose
-Describe the purpose of the SRS and its intended audience.
+This SRS is written to provide a detailed description of the requirements for the BookNexus application. It is intended for a wide audience ranging from developers and stakeholders to testers.  It will serve as a reference point during development, testing stages of the project, and will ensure that the final product meets user needs and aligns with every established objective. 
 
 ### 1.2 Product Scope
-Identify the product whose software requirements are specified in this document, including the revision or release number. Explain what the product that is covered by this SRS will do, particularly if this SRS describes only part of the system or a single subsystem. 
-Provide a short description of the software being specified and its purpose, including relevant benefits, objectives, and goals. Relate the software to corporate goals or business strategies. If a separate vision and scope document is available, refer to it rather than duplicating its contents here.
+BookNexus is an online library site designed to connect readers and authors in a shared digital space. With the slogan "Where stories and readers meet," the product is designed to enable customers to subscribe to and browse a wide library of books from their favorite authors and genres, and to leave reviews on their experiences. With a subscription, authors can upload their books and manage their profiles, keeping track of audience statistics and responding to reviews.
+The software is designed to provide an engaging marketplace where readers gain access to diverse content and authors receive meaningful feedback. By incorporating a subscription-based system and interactive features, the platform focuses on digital distribution and community engagement.
 
-### 1.3 Definitions, Acronyms and Abbreviations                                                                                                                                                                         |
+### 1.3 Definitions, Acronyms and Abbreviations                                                 
+- SRS: Software Requirements Specification
+- Customer/Member (Reader): A user who registers to access, subsrequirementscribe to, and review books.
+- Provider (Author): A user who registers to upload and manage books respond to customer feedback.
 
 ### 1.4 References
-List any other documents or Web addresses to which this SRS refers. These may include user interface style guides, contracts, standards, system requirements specifications, use case documents, or a vision and scope document. Provide enough information so that the reader could access a copy of each reference, including title, author, version number, date, and source or location.
+- IEEE Recommended Practice for Software Specifications
 
 ### 1.5 Document Overview
-Describe what the rest of the document contains and how it is organized.
+- Section 2: provides an overview of the product, including major functions, constrainsts, user characteristics, and dependencies.
+- Section 3: specifies funtional and non-functional requirements in detail.
 
 ## 2. Product Overview
-This section should describe the general factors that affect the product and its requirements. This section does not state specific requirements. Instead, it provides a background for those requirements, which are defined in detail in Section 3, and makes them easier to understand.
 
 ### 2.1 Product Functions
-Summarize the major functions the product must perform or must let the user perform. Details will be provided in Section 3, so only a high level summary (such as a bullet list) is needed here. Organize the functions to make them understandable to any reader of the SRS. A picture of the major groups of related requirements and how they relate, such as a top level data flow diagram or object class diagram, is often effective.
+- Customer/Member (Reader)
+    * Subscribe to access library
+    * Browse library
+    * Leave reviews and ratings
+    * Add books to their Favorites List
+    * View dashboard of books read and wishlist
+- Provider (Author)
+    * Subscribe to gain publishing access
+    * Upload and manage digital books
+    * View cutomer-related statistics
+    * Respond to customer reviews
+    * View dashboard of books uploaded
+- Both (Reader and Author)
+    * Register for account
+    * Edit profile
 
 ### 2.2 Product Constraints
-This subsection should provide a general description of any other items that will limit the developer’s options. These may include:  
-
-* Interfaces to users, other applications or hardware.  
-* Quality of service constraints.  
-* Standards compliance.  
-* Constraints around design or implementation.
+- Interface: The system must support a web-based interface with access from standard browsers
+- Quality of Service: The system should be quick, responsive and support multiple users at once without performance issues
+- Standard Compliance: The system must follow standard authentication protocols to verify users.
+- Design Constrains: the platform will require role-based access in order to support both customer and provider needs.
   
 ### 2.3 User Characteristics
-Identify the various user classes that you anticipate will use this product. User classes may be differentiated based on frequency of use, subset of product functions used, technical expertise, security or privilege levels, educational level, or experience. Describe the pertinent characteristics of each user class. Certain requirements may pertain only to certain user classes. Distinguish the most important user classes for this product from those who are less important to satisfy.
+- Customers (Readers)
+    * Customers is expected to have moderate technical understanding, with the ability to browse and understand basic searching techniques.
+    * Customers are expected to have elementary navigation skills and a firm understanding of subscription systems
+- Providers (Authors)
+    * Providers are expected to have modetrate technical skills, with the understanding in uploading content and monitoring an audience.
+    * Providers are expected to have elementary navigation skills and a firm understanding of subscription systems
 
 ### 2.4 Assumptions and Dependencies
-List any assumed factors (as opposed to known facts) that could affect the requirements stated in the SRS. These could include third-party or commercial components that you plan to use, issues around the development or operating environment, or constraints. The project could be affected if these assumptions are incorrect, are not shared, or change. Also identify any dependencies the project has on external factors, such as software components that you intend to reuse from another project, unless they are already documented elsewhere (for example, in the vision and scope document or the project plan).
-
+- It is assumed that users have reliable internet access and a device with a web browser
+- The system depends on third-party payment services for handling subscriptions
+  
 ## 3. Requirements
 
 ### 3.1 Functional Requirements 
