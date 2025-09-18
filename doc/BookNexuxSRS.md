@@ -1,10 +1,10 @@
 # Software Requirements Specification
-## For <project name>
+## For <BookNexus>
 
 Version 0.1  
-Prepared by <author>  
-<organization>  
-<date created> 
+Prepared by <Logan Wilkins & Joseph Diku>  
+<CSC340>  
+<September 17, 2025> 
 
 Table of Contents
 =================
@@ -36,7 +36,7 @@ Table of Contents
 
 ## Revision History
 | Name | Date    | Reason For Changes  | Version   |
-| ---- | ------- | ------------------- | --------- |
+|Logan |   9/1   | Doing Requirments   | 1.0       |
 |      |         |                     |           |
 |      |         |                     |           |
 |      |         |                     |           |
@@ -50,7 +50,7 @@ Describe the purpose of the SRS and its intended audience.
 Identify the product whose software requirements are specified in this document, including the revision or release number. Explain what the product that is covered by this SRS will do, particularly if this SRS describes only part of the system or a single subsystem. 
 Provide a short description of the software being specified and its purpose, including relevant benefits, objectives, and goals. Relate the software to corporate goals or business strategies. If a separate vision and scope document is available, refer to it rather than duplicating its contents here.
 
-### 1.3 Definitions, Acronyms and Abbreviations                                                                                                                                                                          |
+### 1.3 Definitions, Acronyms and Abbreviations                                                                                                                                                                         |
 
 ### 1.4 References
 List any other documents or Web addresses to which this SRS refers. These may include user interface style guides, contracts, standards, system requirements specifications, use case documents, or a vision and scope document. Provide enough information so that the reader could access a copy of each reference, including title, author, version number, date, and source or location.
@@ -81,47 +81,53 @@ List any assumed factors (as opposed to known facts) that could affect the requi
 ## 3. Requirements
 
 ### 3.1 Functional Requirements 
-This section specifies the software product's requirements. Specify all of the software requirements to a level of detail sufficient to enable designers to design a software system to satisfy those requirements, and to enable testers to test that the software system satisfies those requirements.
-
-The specific requirements should:
 *  FR0: The system will get the user to make a member or author account
     - Each account will have its own Id when made
-*  FR1: 
-*  FR2:
-*  FR3:
-*  FR4:
+*  FR1: The system will allow authors to publish books to the library with the title, and genre.
+*  FR2: The system will allow the ability for memebers to browse through the library to look for books.
+    - There will be a search filter where you can search by author, title and genre.
+*  FR3: The system allows members and authors to subscribe to the site to gain access to discounts and benefits
+    - There is the ability to unsubscribe when you no longer need the subscription
+*  FR4: Members and Authors can edit their profiles at any time.
+*  FR5: Users will be able to browse their dashboard to look at their books and reviews they made.
+*  FR6: The system will allow users to leave a rating and review on books in the library.
+*  FR7: The system will allow the authors to respond to reviews left by memebers on their books
 
 
 #### 3.1.1 User interfaces
-Define the software components for which a user interface is needed. Describe the logical characteristics of each interface between the software product and the users. This may include sample screen images, any GUI standards or product family style guides that are to be followed, screen layout constraints, standard buttons and functions (e.g., help) that will appear on every screen, keyboard shortcuts, error message display standards, and so on. Details of the user interface design should be documented in a separate user interface specification.
-
-Could be further divided into Usability and Convenience requirements.
+The web page will be made using HTML, CSS, and JavaScript.
 
 #### 3.1.2 Hardware interfaces
-Describe the logical and physical characteristics of each interface between the software product and the hardware components of the system. This may include the supported device types, the nature of the data and control interactions between the software and the hardware, and communication protocols to be used.
+Devices with the ability to use the web browser will have access to our page.
 
 #### 3.1.3 Software interfaces
-Describe the connections between this product and other specific software components (name and version), including databases, operating systems, tools, libraries, and integrated commercial components. Identify the data items or messages coming into the system and going out and describe the purpose of each. Describe the services needed and the nature of communications. Refer to documents that describe detailed application programming interface protocols. Identify data that will be shared across software components. If the data sharing mechanism must be implemented in a specific way (for example, use of a global data area in a multitasking operating system), specify this as an implementation constraint.
+As of right now the software interfaces being used are:
+* Java jdk 21 (Coding Language)
+* PostgreSQL 17 (Memory Storage)
+* SpringBoot 3.4.5 (Java-based Framework)
 
 ### 3.2 Non Functional Requirements 
 
 #### 3.2.1 Performance
-If there are performance requirements for the product under various circumstances, state them here and explain their rationale, to help the developers understand the intent and make suitable design choices. Specify the timing relationships for real time systems. Make such requirements as specific as possible. You may need to state performance requirements for individual functional requirements or features.
+* NFR0: The BookNexus System will consume less than 125 MB of memeory
+* NFR1: A new member will be able to set up account and profile in less than 8 mins
+* NFR2: A new author will understand how to publish books and manage their account within 10 mins
+* NFR2: A intermediate user will completely understand how both author and member accounts work
 
 #### 3.2.2 Security
-Specify any requirements regarding security or privacy issues surrounding use of the product or protection of the data used or created by the product. Define any user identity authentication requirements. Refer to any external policies or regulations containing security issues that affect the product. Define any security or privacy certifications that must be satisfied.
+* NFR3: Memebers and Authors must make an account to use the system
 
 #### 3.2.3 Reliability
-Specify the factors required to establish the required reliability of the software system at time of delivery.
+* NFR4: The System will go through a lot of testing to ensure good stability when launched.
 
 #### 3.2.4 Availability
-Specify the factors required to guarantee a defined availability level for the entire system such as checkpoint, recovery, and restart.
+* NFR5: BookNexus will have 24/7 availability. Any scheduled maintenance will be initialized during low activity times to minimize conflicting with the users of the system.
 
 #### 3.2.5 Compliance
-Specify the requirements derived from existing standards or regulations
+
 
 #### 3.2.6 Cost
-Specify monetary cost of the software product.
+* NFR6: We acknowledged there will be no money spent on this project
 
 #### 3.2.7 Deadline
-Specify schedule for delivery of the software product.
+* NFR7: The final product has to be delived by December 2025
