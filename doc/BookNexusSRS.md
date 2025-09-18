@@ -2,8 +2,9 @@
 ## For BookNexus
 
 Version 0.1  
-Prepared by <Joseph Diku and Logan Wilkins>  
-09/16/2025 
+Prepared by <Joseph Diku and Logan Wilkins>
+<CSC340>  
+<09/16/2025>
 
 Table of Contents
 =================
@@ -97,3 +98,57 @@ The software is designed to provide an engaging marketplace where readers gain a
 ### 2.4 Assumptions and Dependencies
 - It is assumed that users have reliable internet access and a device with a web browser
 - The system depends on third-party payment services for handling subscriptions
+  
+## 3. Requirements
+
+### 3.1 Functional Requirements 
+*  FR0: The system will get the user to make a member or author account
+    - Each account will have its own Id when made
+*  FR1: The system will allow authors to publish books to the library with the title, and genre.
+*  FR2: The system will allow the ability for memebers to browse through the library to look for books.
+    - There will be a search filter where you can search by author, title and genre.
+*  FR3: The system allows members and authors to subscribe to the site to gain access to discounts and benefits
+    - There is the ability to unsubscribe when you no longer need the subscription
+*  FR4: Members and Authors can edit their profiles at any time.
+*  FR5: Users will be able to browse their dashboard to look at their books and reviews they made.
+*  FR6: The system will allow users to leave a rating and review on books in the library.
+*  FR7: The system will allow the authors to respond to reviews left by memebers on their books
+
+
+#### 3.1.1 User interfaces
+The web page will be made using HTML, CSS, and JavaScript.
+
+#### 3.1.2 Hardware interfaces
+Devices with the ability to use the web browser will have access to our page.
+
+#### 3.1.3 Software interfaces
+As of right now the software interfaces being used are:
+* Java jdk 21 (Coding Language)
+* PostgreSQL 17 (Memory Storage)
+* SpringBoot 3.4.5 (Java-based Framework)
+
+### 3.2 Non Functional Requirements 
+
+#### 3.2.1 Performance
+* NFR0: The BookNexus System will consume less than 125 MB of memeory
+* NFR1: A new member will be able to set up account and profile in less than 8 mins
+* NFR2: A new author will understand how to publish books and manage their account within 10 mins
+* NFR2: A intermediate user will completely understand how both author and member accounts work
+
+#### 3.2.2 Security
+* NFR3: Memebers and Authors must make an account to use the system
+
+#### 3.2.3 Reliability
+* NFR4: The System will go through a lot of testing to ensure good stability when launched.
+
+#### 3.2.4 Availability
+* NFR5: BookNexus will have 24/7 availability. Any scheduled maintenance will be initialized during low activity times to minimize conflicting with the users of the system.
+
+#### 3.2.5 Compliance
+
+
+#### 3.2.6 Cost
+* NFR6: We acknowledged there will be no money spent on this project
+
+#### 3.2.7 Deadline
+* NFR7: The final product has to be delived by December 2025
