@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Author Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f6f8; margin: 0; }
+        header { background: #2d3e50; color: #fff; padding: 1rem 2rem; }
+        .container { max-width: 1200px; margin: 2rem auto; background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);}
+        h1 { margin-top: 0; }
+        .dashboard-sections { display: flex; gap: 2rem; flex-wrap: wrap; }
+        .section { flex: 1 1 300px; background: #f9fafb; padding: 1rem; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.03);}
+        .books-list, .reviews-list { list-style: none; padding: 0; margin: 0; }
+        .books-list li, .reviews-list li { padding: 0.5rem 0; border-bottom: 1px solid #eee; }
+        .upload-form input, .upload-form textarea { width: 100%; margin-bottom: 0.5rem; padding: 0.5rem; }
+        .upload-form button { background: #2d3e50; color: #fff; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer;}
+        .reply-form textarea { width: 100%; margin-bottom: 0.5rem; }
+        .reply-form button { background: #4caf50; color: #fff; border: none; padding: 0.3rem 0.7rem; border-radius: 4px; cursor: pointer;}
+        .review-reply { background: #e8f5e9; padding: 0.5rem; border-radius: 4px; margin-top: 0.5rem;}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Author Dashboard</h1>
+    </header>
+    <div class="container">
+        <div class="dashboard-sections">
+            <!-- Upload Book Section -->
+            <section class="section">
+                <h2>Upload New Book</h2>
+                <form class="upload-form">
+                    <input type="text" placeholder="Book Title" required>
+                    <textarea placeholder="Book Description" rows="3" required></textarea>
+                    <input type="file" accept=".pdf,.epub" required>
+                    <button type="submit">Upload Book</button>
+                </form>
+            </section>
+            <!-- My Books Section -->
+            <section class="section">
+                <h2>My Uploaded Books</h2>
+                <ul class="books-list">
+                    <li>
+                        <strong>The Art of Coding</strong><br>
+                        <small>Uploaded: Jan 10, 2024</small>
+                    </li>
+                    <li>
+                        <strong>Learning HTML</strong><br>
+                        <small>Uploaded: Feb 5, 2024</small>
+                    </li>
+                    <!-- More books can be listed here -->
+                </ul>
+            </section>
+            <!-- Reviews Section -->
+            <section class="section">
+                <h2>Reviews & Replies</h2>
+                <ul class="reviews-list">
+                    <li>
+                        <strong>Jane Doe:</strong> Loved "The Art of Coding"! Very insightful.<br>
+                        <form class="reply-form">
+                            <textarea rows="2" placeholder="Write a reply..."></textarea>
+                            <button type="submit">Reply</button>
+                        </form>
+                        <!-- Example reply -->
+                        <div class="review-reply">
+                            <strong>You replied:</strong> Thank you for your feedback!
+                        </div>
+                    </li>
+                    <li>
+                        <strong>John Smith:</strong> "Learning HTML" was easy to follow.<br>
+                        <form class="reply-form">
+                            <textarea rows="2" placeholder="Write a reply..."></textarea>
+                            <button type="submit">Reply</button>
+                        </form>
+                    </li>
+                    <!-- More reviews can be listed here -->
+                </ul>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
