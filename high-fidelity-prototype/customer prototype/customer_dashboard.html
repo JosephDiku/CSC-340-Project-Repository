@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Author Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f6f8; margin: 0; }
+        header { background: #2d3e50; color: #fff; padding: 1rem 2rem; }
+        .container { max-width: 1200px; margin: 2rem auto; background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);}
+        h1 { margin-top: 0; }
+        .dashboard-sections { display: flex; gap: 2rem; flex-wrap: wrap; }
+        .section { flex: 1 1 300px; background: #f9fafb; padding: 1rem; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.03);}
+        .books-list, .reviews-list { list-style: none; padding: 0; margin: 0; }
+        .books-list li, .reviews-list li { padding: 0.5rem 0; border-bottom: 1px solid #eee; }
+        .upload-form input, .upload-form textarea { width: 100%; margin-bottom: 0.5rem; padding: 0.5rem; }
+        .upload-form button { background: #2d3e50; color: #fff; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer;}
+        .reply-form textarea { width: 100%; margin-bottom: 0.5rem; }
+        .reply-form button { background: #4caf50; color: #fff; border: none; padding: 0.3rem 0.7rem; border-radius: 4px; cursor: pointer;}
+        .review-reply { background: #e8f5e9; padding: 0.5rem; border-radius: 4px; margin-top: 0.5rem;}
+    </style>
+
+</head>
+
+<body>
+<nav style="background: #e3e7ea; padding: 0.5rem 2rem;">
+    <a href="/high-fidelity-prototype/index.html" style="color: #2d3e50; text-decoration: none; font-weight: bold;">&larr; Home</a>
+</nav>
+
+    <header>
+        <h1>Customer Dashboard</h1>
+    </header>
+    <div class="container">
+        <div class="dashboard-sections">
+
+            <!-- Favorite Books -->
+                <section class="section">
+                    <h2>Favorites Books</h2>
+                    <ul class="favbooks-list">
+                        <li>
+                            <strong>Ashes Beneath the Snow</strong><br>
+                            <small>Author: Corin Hale</small>
+                        </li>
+                        <li>
+                            <strong>The Art of Sitting Still</strong><br>
+                            <small>Author: Hanah Morimoto</small>
+                        </li>
+                        <li>
+                            <strong>Glass Gardens</strong><br>
+                            <small>Author: Niko Albright</small>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Favorite Authors -->
+                <section class="section">
+                    <h2>Favorites Authors</h2>
+                    <ul class="favbooks-list">
+                        <li>
+                            <strong>Niko Albright</strong><br>
+                            <small>3 Books Read</small>
+                        </li>
+                        <li>
+                            <strong>Sophia Knott</strong><br>
+                            <small>1 Books Read</small>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Recently Read Books -->
+                <section class="section">
+                    <h2>Recent Reads</h2>
+                    <ul class="recentbook-list">
+                        <li>
+                            <strong>The Constitution</strong><br>
+                            <small>Author: James Madison</small>
+                        </li>
+                        <li>
+                            <strong>How to Create a HTML Prototype For Your Software Engineer Class?</strong><br>
+                            <small>Author: Peter Parker</small>
+                        </li>
+                    </ul>
+                </section>
+
+            <!-- Reviews Section -->
+            <section class="section">
+                <h2>Reviews & Replies</h2>
+                <ul class="reviews-list">
+                    <li>
+                        You commented: <strong>"Wow, this is really helpful"</strong><br>
+                        <small> on "How to Create a HTML Prototype For Your Software Engineer Class?"</small>
+                    </li>
+                    <li>
+                        You commented: <strong>"This book changed my perspective on life."</strong><br>
+                        <small> on "The Art of Sitting Still"</small>
+                    </li>
+                </ul>
+            </section>
+
+            
+        </div>
+    </div>
+</body>
+</html>
