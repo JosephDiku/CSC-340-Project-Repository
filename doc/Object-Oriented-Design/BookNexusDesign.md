@@ -20,7 +20,7 @@ Table of Contents
 ## Revision History
 | Name | Date    | Reason For Changes  | Version   |
 | ---- | ------- | ------------------- | --------- |
-| Logan  |  10/20  | Initial Design      |    1      |
+|Logan |  10/20  | Initial Design      |     1     |
 |      |         |                     |           |
 |      |         |                     |           |
 
@@ -43,8 +43,12 @@ A Author shall be able to sign in using their registred email and password. Afte
 A Author shall be to modify their profile by going to their profile page. They can change their email, password, and Author name.
 ##### 2.2.1.4 Create Library
 The Author shall be able to create a new library. In this library will hold the books uploaded by them making them availble for the customers to subscribe to.
-##### 2.2.1.5 View Customer Stats
+##### 2.2.1.5 View Stats
 A Author will be able to view several statistics such as total subscription revenue, total subscribers, and average ratings.
+##### 2.2.1.6 Upload Books
+A Author can upload books to the library they made to be viewed by memebers that subscribe.
+##### 2.2.1.7 Respond to Reviews
+A Author is able to respond to the reviews that have been left by the memebers on their books.
 
 #### 2.2.2 Actor: Memeber
 ##### 2.2.2.1 Sign Up
