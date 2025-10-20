@@ -63,6 +63,6 @@ Upon selecting a box, a customer shall be able to subscribe for the box using a 
 A customer may write a review for a box they subscribed to. They will be able to rate the box based on freshness and delivery.
 
 ## 3. UML Class Diagram
-![UML Class Diagram](Link goes here)
+![UML Class Diagram](https://github.com/JosephDiku/CSC-340-Project-Repository/blob/main/doc/Object-Oriented-Design/BookNexusUML.png)
 ## 4. Database Schema
 ![UML Class Diagram](Link goes here)
