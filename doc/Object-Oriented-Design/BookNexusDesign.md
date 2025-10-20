@@ -30,7 +30,7 @@ Authors create a library and publish books to them, customers subscribe to libra
 
 ## 2. Use Cases
 ### 2.1 Use Case Model
-![Use Case Model](https://github.com/JosephDiku/CSC-340-Project-Repository/blob/main/doc/Object-Oriented-Design/Use-case%20diagram.jpg)
+![Use Case Model](https://github.com/JosephDiku/CSC-340-Project-Repository/blob/main/doc/Object-Oriented-Design/Use-Case%20Diagram.png)
 
 ### 2.2 Use Case Descriptions
 
