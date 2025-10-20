@@ -65,4 +65,4 @@ A reader may write a review for a book within the library they subscribed to. Th
 ## 3. UML Class Diagram
 ![UML Class Diagram](https://github.com/JosephDiku/CSC-340-Project-Repository/blob/main/doc/Object-Oriented-Design/BookNexusUML.png)
 ## 4. Database Schema
-![UML Class Diagram](Link goes here)
+![UML Class Diagram](https://github.com/JosephDiku/CSC-340-Project-Repository/blob/main/doc/Object-Oriented-Design/SchemaDiagram.png)
