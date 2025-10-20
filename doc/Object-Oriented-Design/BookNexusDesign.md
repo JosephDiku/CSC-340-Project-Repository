@@ -50,17 +50,17 @@ A Author can upload books to the library they made to be viewed by memebers that
 ##### 2.2.1.7 Respond to Reviews
 A Author is able to respond to the reviews that have been left by the memebers on their books.
 
-#### 2.2.2 Actor: Memeber
+#### 2.2.2 Actor: Reader
 ##### 2.2.2.1 Sign Up
-A customer can sign up to create their profile with their name, email, password, and address. Emails must be unique.
+A reader can sign up to create their profile with their name, email, and password. Emails must be unique.
 ##### 2.2.2.2 Log In
-A customer shall be able to sign in using their registred email and password. After logging in, the customer shall be directed their dashboard where they see an overview of their subscriptions.
-##### 2.2.2.3 Browse Produce Boxes
-A customer shall be able to view available produce boxes. They can do this from the home page or using a search function. They can also filter boxes by name, descriptions, or farm. They will also be able to select one box and view more details.
-##### 2.2.1.4 Subscribe to Produce Box
-Upon selecting a box, a customer shall be able to subscribe for the box using a one-click action. This box will then appear on their dashboard, and they will be able to ammend the subscription.
-##### 2.2.1.5 Review Produce Box
-A customer may write a review for a box they subscribed to. They will be able to rate the box based on freshness and delivery.
+A reader shall be able to sign in using their registred email and password. After logging in, the customer shall be directed their dashboard where they see an overview of their subscriptions, favorite books, favorite authors, and latest reviews.
+##### 2.2.2.3 Browse Author Libraries
+A reader shall be able to view available author libraries. They can do this from the home page or using a search function. They can also filter boxes by name, descriptions, or author. They will also be able to select one library and view more details, such as the name and number of books.
+##### 2.2.1.4 Subscribe to Author Library
+Upon selecting a library, a reader shall be able to subscribe for the library using a one-click action. This library will then appear on their dashboard, and they will be able to ammend the subscription.
+##### 2.2.1.5 Review Books 
+A reader may write a review for a book within the library they subscribed to. They will be able to rate the library based on its overall content.
 
 ## 3. UML Class Diagram
 ![UML Class Diagram](https://github.com/JosephDiku/CSC-340-Project-Repository/blob/main/doc/Object-Oriented-Design/BookNexusUML.png)
