@@ -60,7 +60,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.18.28</version>
+			<version>1.18.40</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
@@ -73,7 +73,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 
-			<!-- Let Spring Boot parent manage compiler plugin and annotation processing -->
+			
 		</plugins>
 	</build>
 
