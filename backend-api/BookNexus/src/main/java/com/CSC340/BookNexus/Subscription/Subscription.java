@@ -27,7 +27,10 @@ public class Subscription {
     @JsonIgnoreProperties("subscriptions")
     private Member member;
 
-    // DO NOT FORGET TO MAP SUBSCRIPTION TO LIBRARY AS WELL
+    @ManyToOne
+    @JoinColumn(name = library_id, nullable = false)
+    @JsonIgnoreProperties("subscriptions")
+    private Library library;
 
     @NotNull
     private LocalDateTime startDate;
