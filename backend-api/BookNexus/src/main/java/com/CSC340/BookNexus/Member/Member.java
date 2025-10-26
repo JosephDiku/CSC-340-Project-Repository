@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Column;
 
 @Entity
-@Data
+@Data // Generates getters, setters, toString, etc. at compile time; no need to manually write them
 @NoArgsConstructor
 @Table(name = "members")
 public class Member {
@@ -48,7 +48,5 @@ public class Member {
     public Member(Long memberId) {
         this.memberId = memberId;
     }
-   
-
 
 }
