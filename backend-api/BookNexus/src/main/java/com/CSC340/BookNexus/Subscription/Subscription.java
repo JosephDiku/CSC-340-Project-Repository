@@ -30,10 +30,6 @@ public class Subscription {
     // DO NOT FORGET TO MAP SUBSCRIPTION TO LIBRARY AS WELL
 
     @NotNull
-    @Enumerated(EnumType.STRING) // Limits the values to those defined in the enum
-    private SubscriptionType subscriptionType;
-
-    @NotNull
     private LocalDateTime startDate;
 
     private LocalDateTime endDate;
