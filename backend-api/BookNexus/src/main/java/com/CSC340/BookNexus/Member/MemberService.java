@@ -48,9 +48,8 @@ public class MemberService {
             .orElseThrow(() -> new EntityNotFoundException("Member not found"));
     }
 
-    public Member getMembersByEmail(String email) {
-        return memberRepository.findByEmail(email)
-            .orElseThrow(() -> new IllegalArgumentException("Member not found"));
+    public List<Member> searchMembersByEmail(String email) {
+        return memberRepository.findByEmailContaining(email);
     }
 
     public Member authenticate(String email, String password) {

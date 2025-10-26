@@ -7,6 +7,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MemberRepository extends JpaRepository<Member, Long> {
+
+    List<Member> findByEmailContaining(String email);
     Optional<Member> findByEmail(String email);
     boolean existsByEmail(String email); // Method to check if a member exists by email
+    
 }
