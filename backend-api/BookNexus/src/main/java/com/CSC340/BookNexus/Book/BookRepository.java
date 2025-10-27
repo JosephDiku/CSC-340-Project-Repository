@@ -9,6 +9,7 @@ import java.util.List;
 
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
-    List<Book> findByLibraryAndAvailable(Library library, boolean available);
-    List<Book> findByAvailable(boolean available);
+    List<Book> findByLibrary(Library library);
+    List<Book> findByLibraryId(Long libraryId);
+    List<Book> findByTitleContainingIgnoreCase(String title);
 }
