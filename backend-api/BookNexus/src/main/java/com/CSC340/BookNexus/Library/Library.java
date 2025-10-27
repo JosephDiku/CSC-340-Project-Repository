@@ -49,6 +49,4 @@ public class Library {
     @JsonIgnoreProperties("library")
     private List<Book> books = new ArrayList<>();
 
-    //have to map the library to subscriptions later
-    //also have to map the books class to the library later
 }
