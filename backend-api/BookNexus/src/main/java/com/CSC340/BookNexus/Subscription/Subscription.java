@@ -40,6 +40,6 @@ public class Subscription {
     private LocalDateTime endDate;
 
     @NotNull
-    private Boolean active = true; // New subscriptions are active by default
+    private boolean active = true; // New subscriptions are active by default
 
 }
