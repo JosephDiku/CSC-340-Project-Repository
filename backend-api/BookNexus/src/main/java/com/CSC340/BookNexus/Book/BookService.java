@@ -44,12 +44,16 @@ public class BookService {
         return bookRepository.findAll();
     }
 
-    public List<Book> getAvailableBooks() {
-        return bookRepository.findByAvailable(true);
+    public List<Book> getBooksByLibrary(Library library) {
+        return bookRepository.findByLibrary(library);
     }
 
-    public List<Book> getBooksByLibrary(Library library) {
-        return bookRepository.findByLibraryAndAvailable(library, true);
+    public List<Book> getBooksByLibraryId(Long libraryId) {
+        return bookRepository.findByLibraryId(libraryId);
+    }
+
+    public List<Book> searchBooksByTitle(String title) {
+        return bookRepository.findByTitleContainingIgnoreCase(title);
     }
     
 }

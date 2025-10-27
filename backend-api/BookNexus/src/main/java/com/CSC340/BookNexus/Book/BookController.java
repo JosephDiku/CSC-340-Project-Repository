@@ -1,7 +1,5 @@
 package com.CSC340.BookNexus.Book;
 
-import com.CSC340.BookNexus.Library.LibraryService;
-
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +12,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BookController {
     private final BookService bookService;
-    private final LibraryService libraryService;
 
     @PostMapping
     public ResponseEntity<Book> createBook(@Valid @RequestBody Book book) {
@@ -38,13 +35,18 @@ public class BookController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Book>> getAvailableBooks() {
-        return ResponseEntity.ok(bookService.getAvailableBooks());
+    public ResponseEntity<List<Book>> getAllBooks() {
+        return ResponseEntity.ok(bookService.getAllBooks());
     }
 
     @GetMapping("/library/{libraryId}")
     public ResponseEntity<List<Book>> getBooksByLibrary(@PathVariable Long libraryId) {
-        return ResponseEntity.ok(bookService.getBooksByLibrary(libraryService.getLibraryById(libraryId)));
+        return ResponseEntity.ok(bookService.getBooksByLibraryId(libraryId));
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<Book>> searchBooks(@RequestParam String title) {
+        return ResponseEntity.ok(bookService.searchBooksByTitle(title));
     }
     
 }
