@@ -29,8 +29,9 @@ public class Subscription {
     private Member member;
 
     @ManyToOne
-    @JoinColumn(name = library_id, nullable = false)
-    @JsonIgnoreProperties("subscriptions")
+
+    @JoinColumn(name = "library_id", nullable = false)
+    @JsonIgnoreProperties({"subcriptions", "reviews"})
     private Library library;
 
     @NotNull
@@ -38,6 +39,7 @@ public class Subscription {
 
     private LocalDateTime endDate;
 
-    private Boolean isActive = true; // New subscriptions are active by default
+    @NotNull
+    private Boolean active = true; // New subscriptions are active by default
 
 }
