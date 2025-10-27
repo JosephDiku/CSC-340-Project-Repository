@@ -13,6 +13,7 @@ import java.util.List;
 
 import com.CSC340.BookNexus.Library.Library;
 import com.CSC340.BookNexus.Review.Review;
+import com.CSC340.BookNexus.Author.Author;
 
 @Data
 @NoArgsConstructor
@@ -34,6 +35,11 @@ public class Book {
 
     @Column(columnDefinition = "TEXT")
     private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "author_id", nullable = false)
+    @JsonIgnoreProperties("books")
+    private Author author;
 
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
     @JsonIgnoreProperties("book")
