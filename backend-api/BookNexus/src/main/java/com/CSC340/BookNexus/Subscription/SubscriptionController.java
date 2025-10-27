@@ -23,7 +23,7 @@ public class SubscriptionController {
 
     @PostMapping
     public ResponseEntity<Subscription> createSubscription(@Valid @RequestBody Subscription subscription) {
-        return ResponseEntity.ok(subcriptionService.createdSubscription(subscription));
+        return ResponseEntity.ok(subscriptionService.createSubscription(subscription));
     }
 
     @PostMapping("/{id}/cancel")
@@ -34,7 +34,7 @@ public class SubscriptionController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Subscription> updateSubscription(@PathVariable Long id, @Valid @RequestBody Subscription subscriptionDetails) {
-        return ResponseEntity.ok(subcriptionService.updateSubscription(id, subscriptionDetails));
+        return ResponseEntity.ok(subscriptionService.updateSubscription(id, subscriptionDetails));
     }
 
 
