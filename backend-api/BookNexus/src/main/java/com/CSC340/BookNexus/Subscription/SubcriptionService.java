@@ -1,8 +1,15 @@
 package com.CSC340.BookNexus.Subscription;
 
+import com.CSC340.BookNexus.Member.Member;
+import com.CSC340.BookNexus.Library.Library;
+import com.CSC340.BookNexus.Author.Author;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
+import jakarta.persistence.EntityNotFoundException;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -17,7 +24,7 @@ public class SubscriptionService {
 
     public Subscription updateSubscription(Long subscriptionId, Subscription subscriptionDetails) {
         Subscription subscription = subscriptionRepository.findById(subscriptionId)
-            .orElseThrow(() -> new IllegalArgumentException("Subscription not found"));
+            .orElseThrow(() -> new EntityNotFoundException("Subscription not found"));
 
         subscription.setActive(subscriptionDetails.isActive());
         subscription.setStartDate(subscriptionDetails.getStartDate());
@@ -28,7 +35,7 @@ public class SubscriptionService {
 
     public void cancelSubscription(Long subscriptionId) {
         Subscription subscription = subscriptionRepository.findById(subscriptionId)
-            .orElseThrow(() -> new IllegalArgumentException("Subscription not found"));
+            .orElseThrow(() -> new EntityNotFoundException("Subscription not found"));
 
         subscription.setActive(false);
         subscriptionRepository.save(subscription);

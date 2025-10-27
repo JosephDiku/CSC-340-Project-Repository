@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 import com.CSC340.BookNexus.Member.Member;
+import com.CSC340.BookNexus.Library.Library;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
