@@ -21,25 +21,20 @@ public class ReviewService {
 
     // Fix errors in the createReview method to not do it based on freshness and delivery ratings
 
-    /*public double getAverageOverallRating(Book book) {
+    public double getAverageOverallRating(Book book) {
         List<Review> reviews = reviewRepository.findByBook(book);
         OptionalDouble average = reviews.stream()
                 .mapToDouble(review -> review.getOverallRating() != null ? review.getOverallRating() : 0.0)
                 .average();
         return average.orElse(0.0);
-    } */
+    }
 
-    /* 
+
     public Review createReview(Review review) {
-        double freshnessRating = review.getFreshnessRating() != null ? review.getFreshnessRating() : 0;
-        double deliveryRating = review.getDeliveryRating() != null ? review.getDeliveryRating() : 0;
-
-        review.setOverallRating(Double.valueOf(freshnessRating + deliveryRating) / 2);
         review.setCreatedAt(LocalDateTime.now());
         return reviewRepository.save(review);
-    } */
+    }
 
-    /* 
     public Review addAuthorResponse(Long id, String response) {
         Review review = reviewRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Review not found"));
@@ -47,7 +42,7 @@ public class ReviewService {
         review.setAuthorResponse(response);
         review.setAuthorResponseDate(LocalDateTime.now());
         return reviewRepository.save(review);
-    } */
+    }
 
     public void deleteReview(Long id) {
         if (!reviewRepository.existsById(id)) {
