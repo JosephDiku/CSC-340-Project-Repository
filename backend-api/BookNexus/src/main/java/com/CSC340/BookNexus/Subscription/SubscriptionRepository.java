@@ -7,6 +7,8 @@ import com.CSC340.BookNexus.Member.Member;
 import com.CSC340.BookNexus.Library.Library;
 import com.CSC340.BookNexus.Author.Author;
 
+import java.util.List;
+
 @Repository
 public interface SubscriptionRepository extends JpaRepository<Subscription, Long> {
 
