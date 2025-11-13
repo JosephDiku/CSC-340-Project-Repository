@@ -1,4 +1,5 @@
-package com.CSC340.BookNexus.Library;
+/* package removed to avoid 'non-project file' error — place this file inside a proper Java project's source folder (e.g. src/main/java)
+   and restore the original package declaration when the file is part of that project */
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;

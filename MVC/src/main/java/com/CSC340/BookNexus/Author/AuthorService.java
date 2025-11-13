@@ -41,4 +41,13 @@ public class AuthorService {
         return authorRepository.findByEmail(email)
             .orElseThrow(() -> new EntityNotFoundException("Author not found"));
     }
+
+    public Author authenticate(String email, String password) {
+        Author author = authorRepository.findByEmail(email)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid email or password"));
+        if (!author.getPassword().equals(password)) {
+            throw new IllegalArgumentException("Invalid email or password");
+        }
+        return author;
+    }
 }
