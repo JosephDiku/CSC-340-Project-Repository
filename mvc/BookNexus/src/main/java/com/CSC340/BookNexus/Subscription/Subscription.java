@@ -31,7 +31,7 @@ public class Subscription {
     @ManyToOne
 
     @JoinColumn(name = "library_id", nullable = false)
-    @JsonIgnoreProperties({"subcriptions", "reviews"})
+    @JsonIgnoreProperties({"subscriptions", "books"})
     private Library library;
 
     @NotNull
