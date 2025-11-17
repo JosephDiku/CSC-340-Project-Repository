@@ -21,6 +21,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/authors/dashboard">Dashboard</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/authors/reviews">Reviews</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/authors/subscriptions">Subscriptions</a>
+                    </li>
                 </ul>
             </div>
         </div>
