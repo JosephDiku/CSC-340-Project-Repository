@@ -7,16 +7,17 @@ import com.CSC340.BookNexus.Book.BookService;
 import com.CSC340.BookNexus.Library.Library;
 import com.CSC340.BookNexus.Library.LibraryService;
 import com.CSC340.BookNexus.Review.ReviewService;
+import com.CSC340.BookNexus.Review.Review;
 import com.CSC340.BookNexus.Subscription.SubscriptionService;
 
-import java.util.List;
+//import java.util.List;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+//import java.time.LocalDateTime;
 
 
 @Controller
@@ -34,6 +35,91 @@ public class AuthorMvcController {
         this.libraryService = libraryService;
         this.reviewService = reviewService;
         this.subscriptionService = subscriptionService;
+    }
+
+    @GetMapping("/reviews")
+    public String listReviews(HttpSession session, Model model) {
+        Long authorId = (Long) session.getAttribute("authorId");
+        if (authorId == null) {
+            return "redirect:/signin";
+        }
+
+        Author author = authorService.getAuthorById(authorId);
+        model.addAttribute("author", author);
+        model.addAttribute("reviews", reviewService.getReviewsByAuthor(author));
+        return "author/reviews";
+    }
+
+    @GetMapping("/reviews/{id}")
+    public String viewReview(@PathVariable Long id, HttpSession session, Model model) {
+        Long authorId = (Long) session.getAttribute("authorId");
+        if (authorId == null) {
+            return "redirect:/signin";
+        }
+
+        Author author = authorService.getAuthorById(authorId);
+        model.addAttribute("author", author);
+
+        Review review = reviewService.getReviewById(id);
+        // ensure the review belongs to one of the author's books
+        if (review.getBook().getAuthor() == null || !review.getBook().getAuthor().getId().equals(author.getId())) {
+            return "redirect:/authors/dashboard";
+        }
+
+        model.addAttribute("review", review);
+        return "author/review-detail";
+    }
+
+    @PostMapping("/reviews/{id}/respond")
+    public String respondToReview(@PathVariable Long id, @RequestParam String response, HttpSession session) {
+        Long authorId = (Long) session.getAttribute("authorId");
+        if (authorId == null) {
+            return "redirect:/signin";
+        }
+
+        Author author = authorService.getAuthorById(authorId);
+        Review review = reviewService.getReviewById(id);
+        if (review.getBook().getAuthor() == null || !review.getBook().getAuthor().getId().equals(author.getId())) {
+            return "redirect:/authors/dashboard";
+        }
+
+        reviewService.addAuthorResponse(id, response);
+        return "redirect:/authors/reviews";
+    }
+
+    @GetMapping("/subscriptions")
+    public String listSubscriptions(HttpSession session, Model model) {
+        Long authorId = (Long) session.getAttribute("authorId");
+        if (authorId == null) {
+            return "redirect:/signin";
+        }
+
+        Author author = authorService.getAuthorById(authorId);
+        model.addAttribute("author", author);
+        model.addAttribute("subscriptions", subscriptionService.getSubscriptionsByAuthor(author));
+        return "author/subscriptions";
+    }
+
+    @PostMapping("/subscriptions/{id}/cancel")
+    public String cancelSubscriptionMvc(@PathVariable Long id, HttpSession session) {
+        Long authorId = (Long) session.getAttribute("authorId");
+        if (authorId == null) {
+            return "redirect:/signin";
+        }
+
+        Author author = authorService.getAuthorById(authorId);
+        // verify ownership: subscription's library must belong to this author
+        try {
+            com.CSC340.BookNexus.Subscription.Subscription subscription = subscriptionService.getSubscriptionById(id);
+            if (subscription.getLibrary() == null || subscription.getLibrary().getAuthor() == null || !subscription.getLibrary().getAuthor().getId().equals(author.getId())) {
+                return "redirect:/authors/dashboard";
+            }
+            subscriptionService.cancelSubscription(id);
+        } catch (Exception e) {
+            // ignore/not found => redirect
+        }
+
+        return "redirect:/authors/subscriptions";
     }
 
     @GetMapping("/signup")
