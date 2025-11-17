@@ -14,6 +14,7 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
@@ -39,10 +40,11 @@ public class Member {
 
     @NotBlank
     @Column(nullable = false)
+    @JsonIgnore
     private String password;
 
     @OneToMany(mappedBy = "member") // One member can have many subscriptions
-    @JsonIgnoreProperties
+    @JsonIgnoreProperties("member")
     private List<Subscription> subscriptions = new ArrayList<>();
 
     public Member(Long memberId) {
