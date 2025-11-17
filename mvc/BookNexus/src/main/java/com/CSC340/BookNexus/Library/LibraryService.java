@@ -32,6 +32,7 @@ public class LibraryService {
 
         library.setLibraryName(libraryDetails.getLibraryName());
         library.setDescription(libraryDetails.getDescription());
+        library.setPrice(libraryDetails.getPrice());
 
         return libraryRepository.save(library);
     }

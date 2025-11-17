@@ -27,7 +27,7 @@ public class SubscriptionController {
     }
 
     @PostMapping("/{id}/cancel")
-    public ResponseEntity<Subscription> cancelSubscription(@PathVariable Long id) {
+    public ResponseEntity<Void> cancelSubscription(@PathVariable Long id) {
         subscriptionService.cancelSubscription(id);
         return ResponseEntity.ok().build();
     }
