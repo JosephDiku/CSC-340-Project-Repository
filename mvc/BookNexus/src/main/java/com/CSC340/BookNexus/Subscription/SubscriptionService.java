@@ -53,4 +53,9 @@ public class SubscriptionService {
         return subscriptionRepository.findByLibraryAuthor(author);
     }
     
+    public Subscription getSubscriptionById(Long id) {
+        return subscriptionRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Subscription not found"));
+    }
+    
 }

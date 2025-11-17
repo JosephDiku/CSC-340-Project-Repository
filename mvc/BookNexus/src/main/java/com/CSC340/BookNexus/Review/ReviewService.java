@@ -63,4 +63,9 @@ public class ReviewService {
         return reviewRepository.findByBookAuthor(author);
     }
     
+    public Review getReviewById(Long id) {
+        return reviewRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Review not found"));
+    }
+    
 }
