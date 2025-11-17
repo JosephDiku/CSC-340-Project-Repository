@@ -1,8 +1,5 @@
 package com.CSC340.BookNexus.Review;
 
-
-// FIX ERRORS ON THIS FILE>
-
 import com.CSC340.BookNexus.Member.MemberService;
 import com.CSC340.BookNexus.Author.AuthorService;
 import com.CSC340.BookNexus.Book.Book;
