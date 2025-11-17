@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface SubscriptionRepository extends JpaRepository<Subscription, Long> {
 
-    List<Subscription> findByMemberAndActive(Member member, Boolean isActive);
+    List<Subscription> findByMemberAndActive(Member member, boolean isActive);
     List<Subscription> findByLibrary(Library library); // Find subscriptions by library
     List<Subscription> findByLibraryAuthor(Author author); // Find subscriptions by library's author
 }    
