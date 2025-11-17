@@ -178,7 +178,7 @@ public class AuthorMvcController {
 
     @PostMapping("/library/edit")
     public String updateLibrary(@RequestParam String libraryName,
-                           @RequestParam String price,
+                           @RequestParam BigDecimal price,
                            @RequestParam(required = false) String description,
                            HttpSession session) {
         Long authorId = (Long) session.getAttribute("authorId");
