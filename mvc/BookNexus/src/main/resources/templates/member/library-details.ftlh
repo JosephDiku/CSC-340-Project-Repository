@@ -48,7 +48,7 @@
                                     </div>
                                     <div class="card-footer bg-transparent border-top">
                                         <a class="btn btn-sm btn-outline-primary" href="/books/${book.id}">Details</a>
-                                        <#if (member?has_content)>
+                                        <#if member??>
                                             <a class="btn btn-sm btn-primary" href="/members/books/${book.id}/review">Review</a>
                                         </#if>
                                     </div>

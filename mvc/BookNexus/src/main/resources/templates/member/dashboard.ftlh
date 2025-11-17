@@ -44,7 +44,7 @@
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <div>
                                             <strong>${sub.library.name}</strong><br>
-                                            <small class="text-muted">Active: ${sub.active?c?then('Yes','No')}</small>
+                                            <small class="text-muted">Active: <#if sub.active>Yes<#else>No</#if></small>
                                         </div>
                                         <a class="btn btn-sm btn-outline-primary" href="/members/libraries/${sub.library.id}">View</a>
                                     </li>
