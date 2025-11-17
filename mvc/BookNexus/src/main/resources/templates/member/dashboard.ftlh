@@ -66,7 +66,7 @@
                                 <div class="mb-2">
                                     <strong>${r.book.title}</strong>
                                     <div><small class="text-muted">${r.overallRating} ★ — ${r.createdAt?string("yyyy-MM-dd")}</small></div>
-                                    <p class="mb-1">${(r.comment!'')?html}</p>
+                                    <p class="mb-1">${(r.comment! '')}</p>
                                 </div>
                             </#list>
                         <#else>
