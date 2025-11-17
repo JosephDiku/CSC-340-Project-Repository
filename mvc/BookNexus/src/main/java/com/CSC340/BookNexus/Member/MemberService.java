@@ -26,8 +26,14 @@ public class MemberService {
         Member member = memberRepository.findById(memberId)
             .orElseThrow(() -> new EntityNotFoundException("Member not found"));
 
+        if (!member.getEmail().equals(memberDetails.getEmail()) &&
+            memberRepository.existsByEmail(memberDetails.getEmail())) {
+            throw new IllegalStateException("This email is already registered.");
+        }
+
         member.setName(memberDetails.getName());
         member.setEmail(memberDetails.getEmail());
+        member.setPassword(memberDetails.getPassword());
 
         return memberRepository.save(member);
     }
