@@ -68,7 +68,12 @@ public class MemberMvcController {
             return "redirect:/signin";
         }
         Member member = memberService.getMemberById(memberId);
+        
+        // Get active subscriptions directly from service to bypass caching issues
+        List<Subscription> activeSubscriptions = subscriptionService.getSubscriptionsByMember(member);
+        
         model.addAttribute("member", member);
+        model.addAttribute("activeSubscriptions", activeSubscriptions);
         return "member/dashboard";
     }
 
@@ -137,8 +142,16 @@ public class MemberMvcController {
             return "redirect:/signin";
         }
 
+        Member member = memberService.getMemberById(memberId);
         Library library = libraryService.getLibraryById(libraryId);
+        
+        // Check if member is actively subscribed (not cancelled)
+        boolean isSubscribed = member.getSubscriptions().stream()
+            .anyMatch(sub -> sub.getLibrary().getId().equals(libraryId) && sub.isActive());
+        
+        model.addAttribute("member", member);
         model.addAttribute("library", library);
+        model.addAttribute("isSubscribed", isSubscribed);
         return "member/library-details";
     }
 
@@ -158,6 +171,24 @@ public class MemberMvcController {
         subscription.setStartDate(LocalDateTime.now());
         subscription.setActive(true);
         subscriptionService.createSubscription(subscription);
+
+        return "redirect:/members/dashboard";
+    }
+
+    @PostMapping("/libraries/{libraryId}/unsubscribe")
+    public String unsubscribe(@PathVariable Long libraryId, HttpSession session) {
+        Long memberId = (Long) session.getAttribute("memberId");
+        if (memberId == null) {
+            return "redirect:/signin";
+        }
+
+        Member member = memberService.getMemberById(memberId);
+        
+        // Find and cancel the active subscription
+        member.getSubscriptions().stream()
+            .filter(sub -> sub.getLibrary().getId().equals(libraryId) && sub.isActive())
+            .findFirst()
+            .ifPresent(sub -> subscriptionService.cancelSubscription(sub.getSubscriptionId()));
 
         return "redirect:/members/dashboard";
     }

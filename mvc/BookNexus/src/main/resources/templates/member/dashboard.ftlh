@@ -94,7 +94,7 @@
                         <h5 class="card-title mb-3">Quick Stats</h5>
                         <p class="mb-2">
                             <strong>Active Subscriptions:</strong><br>
-                            ${(member.subscriptions?size)!0}
+                            ${(activeSubscriptions?size)!0}
                         </p>
                         <p class="mb-0">
                             <strong>Reviews Given:</strong><br>
@@ -112,16 +112,35 @@
                 </div>
             </div>
 
-            <#if member.subscriptions?? && (member.subscriptions?size > 0)>
+            <#if activeSubscriptions?? && (activeSubscriptions?size > 0)>
                 <div class="row">
-                    <#list member.subscriptions as sub>
+                    <#list activeSubscriptions as sub>
                         <div class="col-md-6 col-lg-4">
                             <div class="card h-100 border-0 shadow-sm">
                                 <div class="card-body">
-                                    <h5 class="card-title">${sub.library.name}</h5>
+                                    <a href="/members/libraries/${sub.library.id}" style="text-decoration: none; color: inherit;">
+                                        <h5 class="card-title" style="cursor: pointer; color: #0d6efd;">
+                                            ${sub.library.libraryName!'Library'}
+                                        </h5>
+                                    </a>
                                     <p class="card-text text-muted">
                                         <small>${(sub.library.description!'')?truncate(100)}</small>
                                     </p>
+                                    <div class="mt-3 pt-3 border-top">
+                                        <p class="mb-2">
+                                            <small class="text-muted">
+                                                <strong>Subscribed:</strong><br>
+                                                <#assign subDate = sub.startDate?datetime.iso?date>
+                                                ${subDate?string("MMM dd, yyyy")}
+                                            </small>
+                                        </p>
+                                        <p class="mb-0">
+                                            <small class="text-muted">
+                                                <strong>Price:</strong><br>
+                                                $${sub.library.price}
+                                            </small>
+                                        </p>
+                                    </div>
                                 </div>
                                 <div class="card-footer bg-transparent border-top">
                                     <a href="/members/libraries/${sub.library.id}" class="btn btn-sm btn-outline-primary">
