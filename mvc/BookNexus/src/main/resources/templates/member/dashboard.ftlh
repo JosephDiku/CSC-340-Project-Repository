@@ -33,7 +33,7 @@
 </head>
 
 <body>
-    <#-- Navigation: main site nav for members -->
+    <#-- main site navigations for members -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
@@ -69,7 +69,7 @@
     </nav>
 
         <div class="container">
-            <#-- Welcome: greeting and short description -->
+            <#-- Welcome note -->
         <div class="row mb-4">
             <div class="col-12">
                 <h1 class="display-4">Welcome, ${member.name}!</h1>
@@ -77,7 +77,7 @@
             </div>
         </div>
 
-        <#-- Quick Actions: profile, browse libraries, quick stats -->
+        <#-- browse libraries, quick stats -->
         <div class="row mb-5">
             <div class="col-md-4">
                 <div class="card border-0 shadow-sm">
@@ -114,7 +114,7 @@
             </div>
         </div>
 
-        <#-- Subscriptions Section: lists active subscriptions with metadata -->
+        <#-- Lists active subscriptions with metadata -->
         <div class="dashboard-section">
             <div class="row align-items-center mb-4">
                 <div class="col">
@@ -168,7 +168,7 @@
             </#if>
         </div>
 
-        <#-- Reviews Section: shows recent reviews by the member -->
+        <#-- Reviews Section -->
         <div class="dashboard-section">
             <div class="row align-items-center mb-4">
                 <div class="col">
