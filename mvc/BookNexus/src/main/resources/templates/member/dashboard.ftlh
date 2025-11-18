@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
 
+<#--
+    Member Dashboard Template
+    - Shows member-specific quick actions, active subscriptions, and recent reviews
+    - Sections are annotated with FreeMarker comments for developer clarity
+    -->
+
 <head>
     <meta charset="UTF-8">
     <title>BookNexus - Member Dashboard</title>
@@ -27,6 +33,7 @@
 </head>
 
 <body>
+    <#-- Navigation: main site nav for members -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
@@ -61,7 +68,8 @@
         </div>
     </nav>
 
-    <div class="container">
+        <div class="container">
+            <#-- Welcome: greeting and short description -->
         <div class="row mb-4">
             <div class="col-12">
                 <h1 class="display-4">Welcome, ${member.name}!</h1>
@@ -69,6 +77,7 @@
             </div>
         </div>
 
+        <#-- Quick Actions: profile, browse libraries, quick stats -->
         <div class="row mb-5">
             <div class="col-md-4">
                 <div class="card border-0 shadow-sm">
@@ -105,6 +114,7 @@
             </div>
         </div>
 
+        <#-- Subscriptions Section: lists active subscriptions with metadata -->
         <div class="dashboard-section">
             <div class="row align-items-center mb-4">
                 <div class="col">
@@ -158,6 +168,7 @@
             </#if>
         </div>
 
+        <#-- Reviews Section: shows recent reviews by the member -->
         <div class="dashboard-section">
             <div class="row align-items-center mb-4">
                 <div class="col">
@@ -194,6 +205,7 @@
         </div>
     </div>
 
+    <#-- Footer scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
