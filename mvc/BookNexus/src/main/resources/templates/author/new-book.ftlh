@@ -5,10 +5,61 @@
     <meta charset="UTF-8">
     <title>BookNexus - Create New Book</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        .navbar {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            box-shadow: 0 4px 6px rgba(102, 126, 234, 0.1);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+        .card {
+            border: none;
+            border-radius: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.08);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.15);
+        }
+        .btn-primary, .btn-success {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn-primary:hover, .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(102, 126, 234, 0.3);
+        }
+        .form-control {
+            border: 2px solid #e9ecef;
+            border-radius: 0.5rem;
+            transition: border-color 0.3s;
+        }
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.1);
+        }
+        h2 {
+            color: #667eea;
+            font-weight: 700;
+        }
+        .greeting-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+        }
+    </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+    <nav class="navbar navbar-expand-lg navbar-dark mb-4">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
                 BookNexus
@@ -35,21 +86,28 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <h2 class="mb-4">Publish New Book</h2>
-                <p class="lead text-muted mb-4">Add a new book to your library</p>
+                <div class="greeting-section">
+                    <div style="display: flex; align-items: center;">
+                        <i class="bi bi-plus-circle" style="font-size: 2rem; margin-right: 1rem;"></i>
+                        <div>
+                            <h2 style="color: white; margin: 0;">Publish New Book</h2>
+                            <p style="margin: 0; opacity: 0.95;">Share your next chapter with readers</p>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="card">
                     <div class="card-body">
                         <form action="/authors/books/new" method="post">
                             <div class="mb-3">
-                                <label for="title" class="form-label">Book Title</label>
+                                <label for="title" class="form-label"><i class="bi bi-pencil-square"></i> Book Title</label>
                                 <input type="text" class="form-control" id="title" name="title" 
-                                    placeholder="Enter your book title" required>
+                                    placeholder="Enter your book title (make it catchy)" required>
                             </div>
                             <div class="mb-3">
-                                <label for="description" class="form-label">Book Description</label>
+                                <label for="description" class="form-label"><i class="bi bi-file-text"></i> Book Description</label>
                                 <textarea class="form-control" id="description" name="description" 
-                                    rows="6" placeholder="Tell readers what your book is about..." required></textarea>
+                                    rows="6" placeholder="A short hook: what's the premise or feeling?" required></textarea>
                             </div>
                             <div class="alert alert-info" role="alert">
                                 <strong>Publishing to:</strong> ${author.library.libraryName}

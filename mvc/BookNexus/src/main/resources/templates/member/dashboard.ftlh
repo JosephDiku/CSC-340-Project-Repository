@@ -11,30 +11,102 @@
     <meta charset="UTF-8">
     <title>BookNexus - Member Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/member/dashboard.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        .navbar {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.15);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            margin-bottom: 1.5rem;
+            border: none;
+            border-radius: 1rem;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.15);
+        }
+
+        .card-header-icon {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.4);
+        }
+
+        .dashboard-section {
+            margin-bottom: 3rem;
+        }
+
+        .btn-group-vertical {
+            width: 100%;
+        }
+
+        .greeting-section {
+            padding: 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .greeting-section h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        .greeting-section p {
+            margin: 0;
+            opacity: 0.9;
+        }
+    </style>
 </head>
 
 <body>
-    <#-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom mb-4">
+    <nav class="navbar navbar-expand-lg navbar-dark mb-4">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">BookNexus</a>
+            <a class="navbar-brand" href="/">
+                <i class="bi bi-book"></i> BookNexus
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/members/libraries">Libraries</a></li>
-                    <!-- Removed primary CTA from navbar to avoid redundancy -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/"><i class="bi bi-house"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/members/libraries"><i class="bi bi-building"></i> Libraries</a>
+                    </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="memberDropdown" role="button" data-bs-toggle="dropdown">
-                            <span class="nav-user-pill">${member.name}</span>
+                        <a class="nav-link dropdown-toggle" href="#" id="memberDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person-circle"></i> ${member.name}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="memberDropdown">
-                            <li><a class="dropdown-item" href="/members/profile/edit">Edit Profile</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="/members/logout">Logout</a></li>
+                            <li><a class="dropdown-item" href="/members/profile/edit"><i class="bi bi-pencil-square"></i> Edit Profile</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="/members/logout"><i class="bi bi-door-open"></i> Logout</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -42,32 +114,54 @@
         </div>
     </nav>
 
-    <#-- Welcome Header -->
-    <div class="dashboard-header">
-        <div class="container">
-            <h1>Welcome, ${member.name}!</h1>
-            <p class="lead" style="color: #e6eef5;">Explore libraries, subscribe, and share your reviews</p>
-            <a href="/members/libraries" class="btn-welcome-cta">Browse Libraries</a>
+    <div class="container">
+        <div class="greeting-section">
+            <h1><i class="bi bi-hand-thumbs-up"></i> Welcome, ${member.name}!</h1>
+            <p>Browse libraries, subscribe, and share your reviews with the community</p>
         </div>
     </div>
 
-    <div class="container">
-        <#-- Stat Cards -->
-        <div class="quick-stats">
-            <div class="quick-stats-card accent-blue">
-                <h5>Active Subscriptions</h5>
-                <div class="quick-stats-value">${(activeSubscriptions?size)!0}</div>
-                <small>libraries you follow</small>
+        <div class="row mb-5">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="card-header-icon">
+                            <i class="bi bi-person-check"></i>
+                        </div>
+                        <h5 class="card-title mb-3">Member Profile</h5>
+                        <p class="card-text text-muted">View and edit your profile information</p>
+                        <a href="/members/profile/edit" class="btn btn-primary"><i class="bi bi-pencil-square"></i> Edit Profile</a>
+                    </div>
+                </div>
             </div>
-            <div class="quick-stats-card accent-green">
-                <h5>Reviews Given</h5>
-                <div class="quick-stats-value">${(member.reviews?size)!0}</div>
-                <small>total reviews</small>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="card-header-icon">
+                            <i class="bi bi-building"></i>
+                        </div>
+                        <h5 class="card-title mb-3">Browse Libraries</h5>
+                        <p class="card-text text-muted">Discover and subscribe to libraries</p>
+                        <a href="/members/libraries" class="btn btn-primary"><i class="bi bi-search"></i> Browse</a>
+                    </div>
+                </div>
             </div>
-            <div class="quick-stats-card accent-gold">
-                <h5>Member Since</h5>
-                <div class="quick-stats-value">
-                    <#if member.createdAt??>${member.createdAt?string('MMM yyyy')}<#else>--</#if>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="card-header-icon">
+                            <i class="bi bi-bar-chart"></i>
+                        </div>
+                        <h5 class="card-title mb-3">Quick Stats</h5>
+                        <p class="mb-2">
+                            <strong class="h5" style="color: #667eea;">${(activeSubscriptions?size)!0}</strong><br>
+                            <small class="text-muted">Active Subscriptions</small>
+                        </p>
+                        <p class="mb-0">
+                            <strong class="h5" style="color: #667eea;">${(member.reviews?size)!0}</strong><br>
+                            <small class="text-muted">Reviews Given</small>
+                        </p>
+                    </div>
                 </div>
                 <small>
                     <#if member.createdAt??>${member.createdAt?string('MMMM d, yyyy')}<#else>active member</#if>
@@ -77,7 +171,12 @@
 
         <#-- Subscriptions Section -->
         <div class="dashboard-section">
-            <h2>Your Subscriptions</h2>
+            <div class="row align-items-center mb-4">
+                <div class="col">
+                    <h2 class="mb-0"><i class="bi bi-heart-fill"></i> Your Subscriptions</h2>
+                </div>
+            </div>
+
             <#if activeSubscriptions?? && (activeSubscriptions?size > 0)>
                 <div class="row">
                     <#list activeSubscriptions as sub>
@@ -85,28 +184,30 @@
                             <div class="card h-100">
                                 <div class="card-body">
                                     <a href="/members/libraries/${sub.library.id}" style="text-decoration: none; color: inherit;">
-                                        <h5 class="card-title" style="cursor: pointer; color: #2c3e50;">
-                                            ${sub.library.libraryName!'Library'}
-                                        </h5>
+                                        <h5 class="card-title" style="cursor: pointer; color: #667eea;"><i class="bi bi-building"></i> ${sub.library.libraryName!'Library'}</h5>
                                     </a>
-                                    <p class="card-text"><small>${(sub.library.description!'')?truncate(100)}</small></p>
-                                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #eee;">
-                                        <p style="margin: 0.5rem 0; font-size: 0.9rem;">
-                                            <small style="color: #999;"><strong>Subscribed:</strong></small><br>
-                                            <small style="color: #555;">
+                                    <p class="card-text text-muted">
+                                        <small>${(sub.library.description!'')?truncate(100)}</small>
+                                    </p>
+                                    <div class="mt-3 pt-3 border-top">
+                                        <p class="mb-2">
+                                            <small class="text-muted">
+                                                <i class="bi bi-calendar"></i> <strong>Subscribed:</strong><br>
                                                 <#assign subDate = sub.startDate?datetime.iso?date>
                                                 ${subDate?string("MMM dd, yyyy")}
                                             </small>
                                         </p>
-                                        <p style="margin: 0.5rem 0; font-size: 0.9rem;">
-                                            <small style="color: #999;"><strong>Price:</strong></small><br>
-                                            <small style="color: #555;">$${sub.library.price}</small>
+                                        <p class="mb-0">
+                                            <small class="text-muted">
+                                                <i class="bi bi-tag"></i> <strong>Price:</strong><br>
+                                                $${sub.library.price}
+                                            </small>
                                         </p>
                                     </div>
                                 </div>
-                                <div style="border-top: 1px solid #eee; padding: 1rem; background: #fafafa;">
-                                    <a href="/members/libraries/${sub.library.id}" class="btn btn-sm btn-outline-primary" style="width: 100%; text-align: center;">
-                                        View Library
+                                <div class="card-footer bg-transparent border-top">
+                                    <a href="/members/libraries/${sub.library.id}" class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-arrow-right"></i> View Library
                                     </a>
                                 </div>
                             </div>
@@ -114,41 +215,44 @@
                     </#list>
                 </div>
             <#else>
-                <div class="empty-state-block">
-                    <div class="empty-state-icon">📚</div>
-                    <h4>No Subscriptions Yet</h4>
-                    <p>Start exploring libraries and subscribe to your favorite collections today.</p>
-                    <!-- Removed secondary CTA button to keep hero as primary CTA -->
+                <div class="alert alert-info" role="alert">
+                    <strong><i class="bi bi-info-circle"></i> No subscriptions yet!</strong> <a href="/members/libraries">Browse libraries</a> to subscribe to your favorite content.
                 </div>
             </#if>
         </div>
 
         <#-- Reviews Section -->
         <div class="dashboard-section">
-            <h2>Recent Reviews</h2>
+            <div class="row align-items-center mb-4">
+                <div class="col">
+                    <h2 class="mb-0"><i class="bi bi-chat-left-text"></i> Recent Reviews</h2>
+                </div>
+            </div>
+
             <#if member.reviews?? && (member.reviews?size > 0)>
                 <div class="row">
                     <#list member.reviews as r>
                         <div class="col-md-6 col-lg-4">
                             <div class="card h-100">
                                 <div class="card-body">
-                                    <h5 class="card-title">${r.book.title}</h5>
-                                    <p class="card-text"><small style="color: #3a505e; font-weight: 500;">${r.overallRating} ★</small></p>
-                                    <p class="card-text"><small>${(r.comment!'')?truncate(120)}</small></p>
+                                    <h5 class="card-title"><i class="bi bi-book-open"></i> ${r.book.title}</h5>
+                                    <p class="card-text">
+                                        <small class="text-muted"><i class="bi bi-star-fill"></i> ${r.overallRating} Stars</small>
+                                    </p>
+                                    <p class="card-text">
+                                        <small>${(r.comment!'')?truncate(120)}</small>
+                                    </p>
                                 </div>
-                                <div style="border-top: 1px solid #eee; padding: 1rem; background: #fafafa;">
-                                    <small style="color: #999;">${r.createdAt?string("MMM dd, yyyy")}</small>
+                                <div class="card-footer bg-transparent border-top">
+                                    <small class="text-muted"><i class="bi bi-calendar"></i> ${r.createdAt?string("MMM dd, yyyy")}</small>
                                 </div>
                             </div>
                         </div>
                     </#list>
                 </div>
             <#else>
-                <div class="empty-state-block">
-                    <div class="empty-state-icon">⭐</div>
-                    <h4>No Reviews Yet</h4>
-                    <p>Subscribe to libraries and share your honest reviews to help the community.</p>
-                    <a href="/members/libraries" class="btn btn-primary btn-lg">Explore Libraries</a>
+                <div class="alert alert-info" role="alert">
+                    <strong><i class="bi bi-info-circle"></i> No reviews yet!</strong> Subscribe to a library and share your thoughts on books.
                 </div>
             </#if>
         </div>
