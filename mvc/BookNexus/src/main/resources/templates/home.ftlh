@@ -235,7 +235,7 @@
                 </div>
                 <div class="col-lg-6 mt-5 mt-lg-0 hero-content">
                     <div class="hero-image-container">
-                        <img src="static/images/BookNexusImage.jpg" class="img-fluid"
+                        <img src="/images/BookNexusImage.jpg" class="img-fluid"
                             alt="Collection of books"
                             style="width: 100%; max-height: 450px; object-fit: cover;">
                         <div class="position-absolute bottom-0 start-0 w-100 p-4 text-white"
