@@ -57,8 +57,8 @@
                     <div class="card-header">
                         <ul class="nav nav-tabs card-header-tabs">
                             <li class="nav-item">
-                                <a class="nav-link active" id="customer-tab" data-bs-toggle="tab"
-                                    href="#customer">Customer</a>
+                                <a class="nav-link active" id="member-tab" data-bs-toggle="tab"
+                                    href="#member">Member</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="farmer-tab" data-bs-toggle="tab" href="#farmer">Author</a>
@@ -67,7 +67,7 @@
                     </div>
                     <div class="card-body">
                         <div class="tab-content">
-                            <div class="tab-pane fade show active" id="customer">
+                            <div class="tab-pane fade show active" id="member">
                                 <h3 class="card-title mb-4">Member Sign In</h3>
                                 <form action="/members/signin" method="post">
                                     <div class="mb-3">
