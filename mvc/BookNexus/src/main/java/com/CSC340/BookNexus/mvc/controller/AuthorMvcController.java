@@ -216,6 +216,30 @@ public class AuthorMvcController {
         return "redirect:/authors/dashboard";
     }
 
+    @PostMapping("/library/delete")
+    public String deleteLibrary(HttpSession session) {
+        Long authorId = (Long) session.getAttribute("authorId");
+        if (authorId == null) {
+            return "redirect:/signin";
+        }
+
+        Author author = authorService.getAuthorById(authorId);
+        if (author.getLibrary() == null) {
+            return "redirect:/authors/dashboard";
+        }
+
+        Long libraryId = author.getLibrary().getId();
+        
+        // First, clear the reference from author to library
+        author.setLibrary(null);
+        authorService.updateAuthor(authorId, author);
+        
+        // Then delete the library
+        libraryService.deleteLibrary(libraryId);
+
+        return "redirect:/authors/dashboard";
+    }
+
     @GetMapping("/books/{id}/edit")
     public String editBookForm(@PathVariable Long id, HttpSession session, Model model) {
         Long authorId = (Long) session.getAttribute("authorId");

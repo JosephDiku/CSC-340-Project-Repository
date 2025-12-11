@@ -69,11 +69,14 @@ public class MemberMvcController {
         }
         Member member = memberService.getMemberById(memberId);
         
-        // Get active subscriptions directly from service to bypass caching issues
+        // Get active subscriptions, reviews, and favorite books from database
         List<Subscription> activeSubscriptions = subscriptionService.getSubscriptionsByMember(member);
+        List<Review> memberReviews = reviewService.getReviewsByMember(member);
         
         model.addAttribute("member", member);
         model.addAttribute("activeSubscriptions", activeSubscriptions);
+        model.addAttribute("memberReviews", memberReviews);
+        model.addAttribute("favoriteBooks", member.getFavoriteBooks());
         return "member/dashboard";
     }
 
@@ -240,6 +243,56 @@ public class MemberMvcController {
         review.setCreatedAt(LocalDateTime.now());
 
         reviewService.createReview(review);
+        return "redirect:/members/dashboard";
+    }
+
+    @PostMapping("/reviews/{id}/delete")
+    public String deleteReview(@PathVariable Long id, HttpSession session) {
+        Long memberId = (Long) session.getAttribute("memberId");
+        if (memberId == null) {
+            return "redirect:/signin";
+        }
+
+        Review review = reviewService.getReviewById(id);
+        
+        // Verify that this review belongs to the member
+        if (review.getMember() == null || !review.getMember().getMemberId().equals(memberId)) {
+            return "redirect:/members/dashboard";
+        }
+
+        reviewService.deleteReview(id);
+        return "redirect:/members/dashboard";
+    }
+
+    @GetMapping("/favorites")
+    public String viewFavorites(HttpSession session, Model model) {
+        Long memberId = (Long) session.getAttribute("memberId");
+        if (memberId == null) {
+            return "redirect:/signin";
+        }
+
+        Member member = memberService.getMemberById(memberId);
+        model.addAttribute("member", member);
+        model.addAttribute("favorites", member.getFavoriteBooks());
+        return "member/favorites";
+    }
+
+    @PostMapping("/books/{bookId}/favorite")
+    public String toggleFavorite(@PathVariable Long bookId, HttpSession session) {
+        Long memberId = (Long) session.getAttribute("memberId");
+        if (memberId == null) {
+            return "redirect:/signin";
+        }
+
+        Member member = memberService.getMemberById(memberId);
+        Book book = bookService.getBookById(bookId);
+
+        if (bookService.isFavorite(book, member)) {
+            bookService.removeFromFavorites(book, member);
+        } else {
+            bookService.addToFavorites(book, member);
+        }
+
         return "redirect:/members/dashboard";
     }
 }

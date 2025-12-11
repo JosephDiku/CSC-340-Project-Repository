@@ -149,7 +149,7 @@
         <div class="row">
             <div class="col-12">
                 <h2 class="mb-4"><i class="bi bi-book-half"></i> Books</h2>
-                <#if library.books?? && (library.books?size > 0)>
+                <#if (library.books?size > 0)>
                     <div class="row">
                         <#list library.books as book>
                             <div class="col-md-4 mb-3">
@@ -158,8 +158,10 @@
                                         <h5 class="card-title"><i class="bi bi-book"></i> ${book.title}</h5>
                                         <p class="card-text text-muted">${(book.description!'')?truncate(100)}</p>
                                     </div>
-                                    <div class="card-footer bg-transparent border-top">
-                                        <a class="btn btn-sm btn-outline-primary" href="/books/${book.id}"><i class="bi bi-info-circle"></i> Details</a>
+                                    <div class="card-footer bg-transparent border-top d-flex gap-2">
+                                        <form action="/members/books/${book.id}/favorite" method="post" style="flex: 1;">
+                                            <button type="submit" class="btn btn-sm btn-outline-warning w-100"><i class="bi bi-heart"></i> Favorite</button>
+                                        </form>
                                         <#if member??>
                                             <a class="btn btn-sm btn-primary" href="/members/books/${book.id}/review"><i class="bi bi-star"></i> Review</a>
                                         </#if>

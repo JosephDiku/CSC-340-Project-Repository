@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import com.CSC340.BookNexus.Library.Library;
+import com.CSC340.BookNexus.Member.Member;
 
 import java.util.List;
 
@@ -54,6 +55,22 @@ public class BookService {
 
     public List<Book> searchBooksByTitle(String title) {
         return bookRepository.findByTitleContainingIgnoreCase(title);
+    }
+
+    public void addToFavorites(Book book, Member member) {
+        if (!book.getFavoritedByMembers().contains(member)) {
+            book.getFavoritedByMembers().add(member);
+            bookRepository.save(book);
+        }
+    }
+
+    public void removeFromFavorites(Book book, Member member) {
+        book.getFavoritedByMembers().remove(member);
+        bookRepository.save(book);
+    }
+
+    public boolean isFavorite(Book book, Member member) {
+        return book.getFavoritedByMembers().contains(member);
     }
     
 }

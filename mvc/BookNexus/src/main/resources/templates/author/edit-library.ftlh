@@ -25,14 +25,15 @@
             transform: translateY(-5px);
             box-shadow: 0 8px 20px rgba(102, 126, 234, 0.15);
         }
-        .btn-primary, .btn-success {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .btn-danger {
+            background: #ef4444;
             border: none;
             transition: transform 0.2s, box-shadow 0.2s;
         }
-        .btn-primary:hover, .btn-success:hover {
+        .btn-danger:hover {
+            background: #dc2626;
             transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 6px 12px rgba(239, 68, 68, 0.3);
         }
         .form-control {
             border: 2px solid #e9ecef;
@@ -98,7 +99,7 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <form action="/authors/library/edit" method="post">
+                        <form action="/authors/library/edit" method="post" id="editLibraryForm">
                             <div class="mb-3">
                                 <label for="libraryName" class="form-label"><i class="bi bi-pencil-square"></i> Library Name</label>
                                 <input type="text" class="form-control" id="libraryName" name="libraryName" 
@@ -125,6 +126,11 @@
                                 <button type="submit" class="btn btn-primary">Save Changes</button>
                                 <a href="/authors/dashboard" class="btn btn-secondary">Cancel</a>
                             </div>
+                        </form>
+                        <form action="/authors/library/delete" method="post" id="deleteLibraryForm" style="margin-top: 1rem;">
+                            <button type="submit" class="btn btn-danger w-100" onclick="return confirm('Are you sure you want to delete this library? This action cannot be undone.');">
+                                <i class="bi bi-trash"></i> Delete Library
+                            </button>
                         </form>
                     </div>
                 </div>

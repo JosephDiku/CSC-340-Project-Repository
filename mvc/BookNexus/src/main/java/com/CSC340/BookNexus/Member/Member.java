@@ -16,6 +16,8 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.CSC340.BookNexus.Review.Review;
+import com.CSC340.BookNexus.Book.Book;
 
 import jakarta.persistence.Column;
 
@@ -46,6 +48,14 @@ public class Member {
     @OneToMany(mappedBy = "member") // One member can have many subscriptions
     @JsonIgnoreProperties("member")
     private List<Subscription> subscriptions = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member") // One member can have many reviews
+    @JsonIgnoreProperties("member")
+    private List<Review> reviews = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "favoritedByMembers")
+    @JsonIgnoreProperties("favoritedByMembers")
+    private List<Book> favoriteBooks = new ArrayList<>();
 
     public Member(Long memberId) {
         this.memberId = memberId;
