@@ -251,7 +251,7 @@
                                 <#list subscriptionsRecent as s>
                                     <li class="mb-2">
                                         <strong><i class="bi bi-person-circle"></i> ${s.member.name!"Member"}</strong>
-                                        <div class="text-muted">Started: ${s.startDate!""}</div>
+                                        <div class="text-muted">Started: <#if s.startDate??>${s.startDate}<#else>—</#if></div>
                                     </li>
                                 </#list>
                             </ul>
