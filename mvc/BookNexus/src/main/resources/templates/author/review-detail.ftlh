@@ -96,7 +96,7 @@
         <div class="review-content" style="border-left-color: #27ae60; background-color: #eafaf1;">
             <h5><i class="bi bi-check-circle"></i> Your Response</h5>
             <p style="margin-bottom: 0;">${review.authorResponse}</p>
-            <small style="color: #666;">Sent on ${review.authorResponseDate?string('yyyy-MM-dd HH:mm')}</small>
+            <small style="color: #666;">Sent on ${review.authorResponseDate!""}</small>
         </div>
     </#if>
 
