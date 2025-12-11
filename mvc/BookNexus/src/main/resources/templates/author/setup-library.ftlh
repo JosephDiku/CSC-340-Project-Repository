@@ -5,10 +5,61 @@
     <meta charset="UTF-8">
     <title>BookNexus - Set Up Library</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        .navbar {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            box-shadow: 0 4px 6px rgba(102, 126, 234, 0.1);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+        .card {
+            border: none;
+            border-radius: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.08);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.15);
+        }
+        .btn-primary, .btn-success {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn-primary:hover, .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(102, 126, 234, 0.3);
+        }
+        .form-control {
+            border: 2px solid #e9ecef;
+            border-radius: 0.5rem;
+            transition: border-color 0.3s;
+        }
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.1);
+        }
+        h2 {
+            color: #667eea;
+            font-weight: 700;
+        }
+        .greeting-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+        }
+    </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+    <nav class="navbar navbar-expand-lg navbar-dark mb-4">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
                 BookNexus
@@ -35,26 +86,33 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <h2 class="mb-4">Create Your Author Library</h2>
-                <p class="lead text-muted mb-4">Set up your library to start publishing books and sharing your work with readers.</p>
+                <div class="greeting-section">
+                    <div style="display: flex; align-items: center;">
+                        <i class="bi bi-rocket-takeoff" style="font-size: 2rem; margin-right: 1rem;"></i>
+                        <div>
+                            <h2 style="color: white; margin: 0;">Create Your Author Library</h2>
+                            <p style="margin: 0; opacity: 0.95;">Make it yours</p>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="card">
                     <div class="card-body">
                         <form action="/authors/library/setup" method="post">
                             <div class="mb-3">
-                                <label for="libraryName" class="form-label">Library Name</label>
+                                <label for="libraryName" class="form-label"><i class="bi bi-pencil-square"></i> Library Name</label>
                                 <input type="text" class="form-control" id="libraryName" name="libraryName" 
-                                    placeholder="e.g., John Smith's Book Collection" required>
-                                <small class="text-muted">This is the name readers will see</small>
+                                    placeholder="e.g., Jane Doe — Short Stories" required>
+                                <small class="text-muted">Readers will see this name. Pro tip: include your author name or brand.</small>
                             </div>
                             <div class="mb-3">
-                                <label for="price" class="form-label">Base Price (USD)</label>
+                                <label for="price" class="form-label"><i class="bi bi-tag"></i> Base Price (USD)</label>
                                 <input type="number" class="form-control" id="price" name="price" 
                                     placeholder="0.00" step="0.01" required>
                                 <small class="text-muted">This can be adjusted per book</small>
                             </div>
                             <div class="mb-3">
-                                <label for="description" class="form-label">Library Description (Optional)</label>
+                                <label for="description" class="form-label"><i class="bi bi-file-text"></i> Library Description (Optional)</label>
                                 <textarea class="form-control" id="description" name="description" 
                                     rows="4" placeholder="Tell readers about your library and writing style..."></textarea>
                             </div>

@@ -5,22 +5,64 @@
     <meta charset="UTF-8">
     <title>${title!"BookNexus"}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
     <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
         .hero-image-container {
             position: relative;
             overflow: hidden;
-            border-radius: 1rem;
+            border-radius: 1.5rem;
             box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175);
-            transition: transform 0.3s ease-in-out;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
 
         .hero-image-container:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 2rem 4rem rgba(0, 0, 0, .25);
         }
 
         .featured-section {
             position: relative;
             z-index: 1;
+            padding: 4rem 0;
         }
 
         .featured-section::before {
@@ -30,17 +72,94 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: #f8f9fa;
-            transform: skewY(-3deg);
+            background: linear-gradient(180deg, #ffffff 0%, #f0f2f5 100%);
+            transform: skewY(-2deg);
             z-index: -1;
         }
 
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+
         .card {
-            transition: transform 0.2s ease-in-out;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            border: none;
+            border-radius: 1rem;
+            overflow: hidden;
         }
 
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.15);
+        }
+
+        .card-header-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn-lg {
+            padding: 0.8rem 2.5rem;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-outline-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .cta-section-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
         }
     </style>
 </head>
@@ -88,46 +207,55 @@
         </div>
     </nav>
 
-    <div class="container">
-        <div class="px-4 py-5 my-5">
-            <div class="row align-items-center">
-                <div class="col-lg-6 text-center text-lg-start">
-                    <h1 class="display-5 fw-bold text-body-emphasis mb-4">Welcome to BookNexus</h1>
+    <div class="hero-section">
+        <div class="container">
+            <div class="row align-items-center py-5">
+                <div class="col-lg-6 hero-content">
+                    <div class="feature-badge">
+                        <i class="bi bi-star-fill"></i> Welcome to BookNexus
+                    </div>
+                    <h1 class="display-4 fw-bold mb-4">Discover Your Next Great Read</h1>
                     <p class="lead mb-4">
-                        Discover a world of books, connect with fellow readers, and explore curated collections
-                        from libraries and independent authors.
+                        Connect with thousands of readers, explore curated collections from libraries, and discover hidden gems from independent authors. Your reading journey starts here.
                     </p>
-                    <div class="d-grid gap-2 d-sm-flex justify-content-lg-start justify-content-center">
-                        <a href="/signup" class="btn btn-primary btn-lg px-4 gap-3">Get Started</a>
-                        <a href="/signin" class="btn btn-outline-secondary btn-lg px-4">Sign In</a>
+                    <div class="d-grid gap-3 d-sm-flex justify-content-lg-start justify-content-center">
+                        <a href="/signup" class="btn btn-light btn-lg px-4"><i class="bi bi-rocket-takeoff"></i> Get Started</a>
+                        <a href="/signin" class="btn btn-outline-light btn-lg px-4"><i class="bi bi-door-open"></i> Sign In</a>
                     </div>
                 </div>
-                <div class="col-lg-6 mt-5 mt-lg-0">
-                    <div class="position-relative">
-                        <img src="/images/books.jpg" class="img-fluid rounded-3 shadow-lg"
+                <div class="col-lg-6 mt-5 mt-lg-0 hero-content">
+                    <div class="hero-image-container">
+                        <img src="static/images/BookNexusImage.jpg" class="img-fluid"
                             alt="Collection of books"
-                            style="width: 100%; max-height: 400px; object-fit: cover;">
-                        <div class="position-absolute bottom-0 start-0 w-100 p-3 text-white"
-                            style="background: linear-gradient(transparent, rgba(0,0,0,0.7));">
-                            <p class="mb-0"><small>Explore thousands of books, one story at a time</small></p>
+                            style="width: 100%; max-height: 450px; object-fit: cover;">
+                        <div class="position-absolute bottom-0 start-0 w-100 p-4 text-white"
+                            style="background: linear-gradient(transparent, rgba(0,0,0,0.8));">
+                            <p class="mb-0 fw-semibold"><i class="bi bi-book"></i> Explore thousands of books, one story at a time</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="featured-section py-5 mb-5">
+        <div class="featured-section">
             <div class="row mb-5">
                 <div class="col-12">
-                    <h2 class="text-center mb-4">Featured Libraries</h2>
-                    <p class="text-center text-muted mb-5">Discover libraries offering curated collections and exclusive content</p>
+                    <h2 class="text-center section-title mb-4"><i class="bi bi-building"></i> Featured Libraries</h2>
+                    <p class="text-center text-muted mb-5">Discover libraries offering curated collections and exclusive content from around the world</p>
                     <div class="row">
                         <#list libraries as library>
                             <div class="col-md-4 mb-4">
-                                <div class="card h-100 border-0 shadow-sm">
+                                <div class="card h-100">
                                     <div class="card-body">
+                                        <div class="card-header-icon text-primary">
+                                            <i class="bi bi-library"></i>
+                                        </div>
                                         <h5 class="card-title">${library.libraryName}</h5>
-                                        <p class="card-text">${(library.description!'')?truncate(150)}</p>
+                                        <p class="card-text text-muted">${(library.description!'')?truncate(150)}</p>
+                                        <div class="mt-3">
+                                            <small class="text-muted"><i class="bi bi-arrow-right"></i> Explore</small>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -142,18 +270,22 @@
 
             <div class="row mb-5">
                 <div class="col-12">
-                    <h2 class="text-center mb-4">Featured Books</h2>
-                    <p class="text-center text-muted mb-5">Browse our collection of bestsellers and hidden gems</p>
+                    <h2 class="text-center section-title mb-4"><i class="bi bi-book-fill"></i> Featured Books</h2>
+                    <p class="text-center text-muted mb-5">Browse our collection of bestsellers and hidden gems from talented authors</p>
                     <div class="row">
                         <#list books as book>
                             <div class="col-md-4 mb-4">
-                                <div class="card h-100 border-0 shadow-sm">
+                                <div class="card h-100">
                                     <div class="card-body">
-                                        <div class="d-flex justify-content-between align-items-start mb-2">
-                                            <h5 class="card-title mb-0">${book.title}</h5>
+                                        <div class="card-header-icon text-success">
+                                            <i class="bi bi-book-open"></i>
                                         </div>
-                                        <p class="card-text"><small class="text-muted">By: ${(book.author.name)!''}</small></p>
-                                        <p class="card-text">${(book.description!'')?truncate(150)}</p>
+                                        <h5 class="card-title">${book.title}</h5>
+                                        <p class="card-text"><small class="text-muted"><i class="bi bi-pen"></i> By: ${(book.author.name)!''}</small></p>
+                                        <p class="card-text text-muted small">${(book.description!'')?truncate(150)}</p>
+                                        <div class="mt-3">
+                                            <span class="badge bg-light text-dark"><i class="bi bi-star"></i> Featured</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -167,16 +299,18 @@
             </div>
         </div>
 
-        <div class="text-center py-5 mb-5" style="background-color: #f8f9fa; border-radius: 1rem;">
-            <div class="col-lg-8 mx-auto">
-                <h2 class="display-6 mb-3">Ready to Explore BookNexus?</h2>
-                <p class="lead mb-4">
-                    Join BookNexus to discover thousands of books, connect with authors and libraries,
-                    and share your reading journey with the community.
-                </p>
-                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                    <a href="/signup" class="btn btn-primary btn-lg px-5 gap-3">Sign Up Now</a>
-                    <a href="/signin" class="btn btn-outline-primary btn-lg px-5">Sign In</a>
+        <div class="cta-section py-5 mb-5">
+            <div class="cta-section-content text-center">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="display-5 fw-bold mb-3"><i class="bi bi-rocket-fill"></i> Ready to Start Your Journey?</h2>
+                    <p class="lead mb-4">
+                        Join thousands of readers and authors on BookNexus. Discover thousands of books, connect with passionate readers,
+                        and grow your reading community today.
+                    </p>
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                        <a href="/signup" class="btn btn-light btn-lg px-5 fw-bold"><i class="bi bi-person-plus"></i> Sign Up Now</a>
+                        <a href="/signin" class="btn btn-outline-light btn-lg px-5 fw-bold"><i class="bi bi-person-check"></i> Already a Member?</a>
+                    </div>
                 </div>
             </div>
         </div>
