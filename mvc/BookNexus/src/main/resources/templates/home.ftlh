@@ -7,6 +7,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
     <style>
+        .navbar {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            box-shadow: 0 4px 6px rgba(102, 126, 234, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
         body {
             background-color: #f8f9fa;
         }
@@ -165,7 +175,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+    <nav class="navbar navbar-expand-lg navbar-dark mb-4">
         <div class="container">
             <a class="navbar-brand" href="/">
                 BookNexus
@@ -176,32 +186,32 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Home</a>
+                        <a class="nav-link" href="/"><i class="bi bi-house-fill"></i> Home</a>
                     </li>
                     <#if authorId?? || memberId??>
                         <#if memberId??>
                             <li class="nav-item">
-                                <a class="nav-link" href="/members/dashboard">Dashboard</a>
+                                <a class="nav-link" href="/members/dashboard"><i class="bi bi-speedometer2"></i> Dashboard</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/members/logout">Logout</a>
+                                <a class="nav-link" href="/members/logout"><i class="bi bi-door-left"></i> Logout</a>
                             </li>
                             <#else>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/authors/dashboard">Dashboard</a>
+                                    <a class="nav-link" href="/authors/dashboard"><i class="bi bi-speedometer2"></i> Dashboard</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/authors/logout">Logout</a>
+                                    <a class="nav-link" href="/authors/logout"><i class="bi bi-door-left"></i> Logout</a>
                                 </li>
                         </#if>
                         <#else>
                             <li class="nav-item">
-                                <a class="nav-link" href="/signin">Sign In</a>
+                                <a class="nav-link" href="/signin"><i class="bi bi-door-left"></i> Sign In</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/signup">Sign Up</a>
+                                <a class="nav-link" href="/signup"><i class="bi bi-person-plus"></i> Sign Up</a>
                             </li>
-                    </#if>
+                        </#if>
                 </ul>
             </div>
         </div>
