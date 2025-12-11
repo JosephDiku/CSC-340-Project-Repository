@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
 
+<#--
+    Member Dashboard Template
+    - Shows active subscriptions, reviews, and quick stats
+    - CSS is externalized to css/dashboard.css for better maintainability
+    -->
+
 <head>
     <meta charset="UTF-8">
     <title>BookNexus - Member Dashboard</title>
@@ -113,6 +119,7 @@
             <h1><i class="bi bi-hand-thumbs-up"></i> Welcome, ${member.name}!</h1>
             <p>Browse libraries, subscribe, and share your reviews with the community</p>
         </div>
+    </div>
 
         <div class="row mb-5">
             <div class="col-md-4">
@@ -156,9 +163,13 @@
                         </p>
                     </div>
                 </div>
+                <small>
+                    <#if member.createdAt??>${member.createdAt?string('MMMM d, yyyy')}<#else>active member</#if>
+                </small>
             </div>
         </div>
 
+        <#-- Subscriptions Section -->
         <div class="dashboard-section">
             <div class="row align-items-center mb-4">
                 <div class="col">
@@ -210,6 +221,7 @@
             </#if>
         </div>
 
+        <#-- Reviews Section -->
         <div class="dashboard-section">
             <div class="row align-items-center mb-4">
                 <div class="col">
@@ -244,9 +256,9 @@
                 </div>
             </#if>
         </div>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        </div>
+    </div>
 </body>
 
 </html>
