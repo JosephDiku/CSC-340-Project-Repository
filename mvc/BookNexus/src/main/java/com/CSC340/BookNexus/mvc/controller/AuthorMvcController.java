@@ -17,6 +17,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.util.List;
+import com.CSC340.BookNexus.Subscription.Subscription;
 //import java.time.LocalDateTime;
 
 
@@ -68,6 +70,19 @@ public class AuthorMvcController {
         }
         Author author = authorService.getAuthorById(authorId);
         model.addAttribute("author", author);
+
+        // Load recent reviews and subscriptions for a richer dashboard
+        List<Review> allReviews = reviewService.getReviewsByAuthor(author);
+        int reviewsCount = allReviews == null ? 0 : allReviews.size();
+        List<Review> recentReviews = (allReviews != null && allReviews.size() > 3) ? allReviews.subList(0, 3) : allReviews;
+        model.addAttribute("reviewsCount", reviewsCount);
+        model.addAttribute("reviewsRecent", recentReviews);
+
+        List<Subscription> allSubs = subscriptionService.getSubscriptionsByAuthor(author);
+        int subsCount = allSubs == null ? 0 : allSubs.size();
+        List<Subscription> recentSubs = (allSubs != null && allSubs.size() > 3) ? allSubs.subList(0, 3) : allSubs;
+        model.addAttribute("subscriptionsCount", subsCount);
+        model.addAttribute("subscriptionsRecent", recentSubs);
         return "author/dashboard";
     }
 
