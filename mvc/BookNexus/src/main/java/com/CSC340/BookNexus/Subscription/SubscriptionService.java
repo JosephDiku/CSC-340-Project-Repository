@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import jakarta.persistence.EntityNotFoundException;
 
+import java.time.LocalDateTime;
+
 import java.util.List;
 
 @Service
@@ -38,6 +40,7 @@ public class SubscriptionService {
             .orElseThrow(() -> new EntityNotFoundException("Subscription not found"));
 
         subscription.setActive(false);
+        subscription.setEndDate(LocalDateTime.now());
         subscriptionRepository.save(subscription);
     }
 

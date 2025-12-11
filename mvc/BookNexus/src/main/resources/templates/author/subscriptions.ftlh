@@ -98,9 +98,9 @@
             <#list subscriptions as s>
                 <tr>
                     <td>${s.member.name!"Unknown"}</td>
-                    <td>${s.startDate!""}</td>
+                    <td><#if s.startDate??>${s.startDate}<#else>—</#if></td>
                     <td><#if s.endDate??>${s.endDate}<#else>—</#if></td>
-                    <td>${s.active?string('true','false')}</td>
+                    <td>${s.active?string('Yes','No')}</td>
                     <td>
                         <form method="post" action="/authors/subscriptions/${s.subscriptionId}/cancel" onsubmit="return confirm('Cancel subscription?');">
                             <button class="btn btn-sm btn-danger">Cancel</button>
