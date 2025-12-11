@@ -12,6 +12,7 @@ import java.util.List;
 import com.CSC340.BookNexus.Library.Library;
 import com.CSC340.BookNexus.Review.Review;
 import com.CSC340.BookNexus.Author.Author;
+import com.CSC340.BookNexus.Member.Member;
 
 @Data
 @NoArgsConstructor
@@ -42,4 +43,13 @@ public class Book {
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
     @JsonIgnoreProperties("book")
     private List<Review> reviews = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(
+        name = "favorite_books",
+        joinColumns = @JoinColumn(name = "book_id"),
+        inverseJoinColumns = @JoinColumn(name = "member_id")
+    )
+    @JsonIgnoreProperties("favoriteBooks")
+    private List<Member> favoritedByMembers = new ArrayList<>();
 }

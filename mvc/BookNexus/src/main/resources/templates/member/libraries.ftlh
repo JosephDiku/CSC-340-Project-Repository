@@ -79,7 +79,7 @@
         </div>
 
         <div class="row">
-            <#if libraries?? && (libraries?size > 0)>
+            <#if (libraries?size > 0)>
                 <#list libraries as lib>
                     <div class="col-md-4 mb-3">
                         <div class="card h-100">

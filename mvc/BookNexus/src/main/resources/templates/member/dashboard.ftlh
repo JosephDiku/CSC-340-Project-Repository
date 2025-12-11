@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<#--
-    Member Dashboard Template
-    - Shows active subscriptions, reviews, and quick stats
-    - CSS is externalized to css/dashboard.css for better maintainability
-    -->
+<#-- Member Dashboard Template -->
 
 <head>
     <meta charset="UTF-8">
@@ -52,6 +48,18 @@
             box-shadow: 0 8px 16px rgba(102, 126, 234, 0.4);
         }
 
+        .btn-success {
+            background: #10b981;
+            border: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn-success:hover {
+            background: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(16, 185, 129, 0.3);
+        }
+
         .dashboard-section {
             margin-bottom: 3rem;
         }
@@ -75,6 +83,14 @@
         .greeting-section p {
             margin: 0;
             opacity: 0.9;
+        }
+
+        .avatar {
+            width: 80px;
+            height: 80px;
+            font-weight: 700;
+            font-size: 1.75rem;
+            background: rgba(255, 255, 255, 0.3);
         }
     </style>
 </head>
@@ -115,11 +131,19 @@
     </nav>
 
     <div class="container">
-        <div class="greeting-section">
-            <h1><i class="bi bi-hand-thumbs-up"></i> Welcome, ${member.name}!</h1>
-            <p>Browse libraries, subscribe, and share your reviews with the community</p>
-        </div>
-    </div>
+        <div class="greeting-section d-flex align-items-center gap-4">
+                <#-- Avatar / Greeting -->
+                <#if member.avatarUrl??>
+                    <img src="${member.avatarUrl}" alt="avatar" class="rounded-circle avatar">
+                <#else>
+                    <div class="rounded-circle avatar d-flex align-items-center justify-content-center">${(member.name?split(" ")[0])?substring(0,1)!"M"}</div>
+                </#if>
+                <div>
+                    <h1 class="mb-2"><i class="bi bi-hand-thumbs-up"></i> Welcome back, ${member.name}!</h1>
+                    <p class="mb-1">Browse libraries, subscribe, and share your reviews with the community</p>
+                    <small><i class="bi bi-info-circle"></i> Tip: Explore new libraries and discover great books.</small>
+                </div>
+            </div>
 
         <div class="row mb-5">
             <div class="col-md-4">
@@ -158,14 +182,11 @@
                             <small class="text-muted">Active Subscriptions</small>
                         </p>
                         <p class="mb-0">
-                            <strong class="h5" style="color: #667eea;">${(member.reviews?size)!0}</strong><br>
-                            <small class="text-muted">Reviews Given</small>
+                            <strong class="h5" style="color: #667eea;">${(memberReviews?size)!0}</strong><br>
+                            <small class="text-muted">Books Read</small>
                         </p>
                     </div>
                 </div>
-                <small>
-                    <#if member.createdAt??>${member.createdAt?string('MMMM d, yyyy')}<#else>active member</#if>
-                </small>
             </div>
         </div>
 
@@ -177,7 +198,7 @@
                 </div>
             </div>
 
-            <#if activeSubscriptions?? && (activeSubscriptions?size > 0)>
+            <#if (activeSubscriptions?size > 0)>
                 <div class="row">
                     <#list activeSubscriptions as sub>
                         <div class="col-md-6 col-lg-4">
@@ -229,9 +250,9 @@
                 </div>
             </div>
 
-            <#if member.reviews?? && (member.reviews?size > 0)>
+            <#if (memberReviews?size > 0)>
                 <div class="row">
-                    <#list member.reviews as r>
+                    <#list memberReviews as r>
                         <div class="col-md-6 col-lg-4">
                             <div class="card h-100">
                                 <div class="card-body">
@@ -243,8 +264,14 @@
                                         <small>${(r.comment!'')?truncate(120)}</small>
                                     </p>
                                 </div>
-                                <div class="card-footer bg-transparent border-top">
-                                    <small class="text-muted"><i class="bi bi-calendar"></i> ${r.createdAt?string("MMM dd, yyyy")}</small>
+                                <div class="card-footer bg-transparent border-top d-flex justify-content-between align-items-center">
+                                    <#assign reviewDate = r.createdAt?datetime.iso?date>
+                                    <small class="text-muted"><i class="bi bi-calendar"></i> ${reviewDate?string("MMM dd, yyyy")}</small>
+                                    <form action="/members/reviews/${r.id}/delete" method="post" style="display: inline;">
+                                        <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Delete this review?');">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -257,8 +284,52 @@
             </#if>
         </div>
 
+        <#-- Favorite Books Section -->
+        <div class="dashboard-section">
+            <div class="row align-items-center mb-4">
+                <div class="col">
+                    <h2 class="mb-0"><i class="bi bi-heart-fill"></i> Your Favorite Books</h2>
+                </div>
+                <div class="col-auto">
+                    <a href="/members/favorites" class="btn btn-sm btn-outline-primary"><i class="bi bi-arrow-right"></i> View All</a>
+                </div>
+            </div>
+
+            <#if (favoriteBooks?size > 0)>
+                <div class="row">
+                    <#list favoriteBooks?sort_by("title") as book>
+                        <#if book_index lt 3>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><i class="bi bi-book-open"></i> ${book.title}</h5>
+                                        <p class="card-text text-muted">
+                                            <small><strong>Author:</strong> ${book.author.name}</small>
+                                        </p>
+                                        <p class="card-text">
+                                            <small>${(book.description!'')?truncate(100)}</small>
+                                        </p>
+                                    </div>
+                                    <div class="card-footer bg-transparent border-top">
+                                        <a href="/members/favorites" class="btn btn-sm btn-outline-primary">
+                                            <i class="bi bi-arrow-right"></i> View
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </#if>
+                    </#list>
+                </div>
+            <#else>
+                <div class="alert alert-info" role="alert">
+                    <strong><i class="bi bi-info-circle"></i> No favorite books yet!</strong> Browse libraries and click the heart icon to add books to your favorites.
+                </div>
+            </#if>
         </div>
+
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
